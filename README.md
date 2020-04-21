@@ -11,7 +11,7 @@
 
 - [X] Empty Skeleton Class Files
 - [ ] Add proper class specifications (class, abstract, interface) 
-- [ ] BankComponent
+- [X] BankComponent
 - [X] ID
 - [ ] Bank
 - [ ] BankUser
