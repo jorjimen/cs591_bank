@@ -22,10 +22,10 @@
 - [ ] SavingsAccount
 - [ ] SecuritiesAccount
 - [ ] LoanAccount
-- [ ] Currency
-- [ ] Dollar
-- [ ] Euro
-- [ ] Yen
+- [X] Currency
+- [X] Dollar
+- [X] Euro
+- [X] Yen
 - [ ] Transaction
 - [ ] Deposit
 - [ ] Withdrawl
