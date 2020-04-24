@@ -4,14 +4,15 @@
 
 import java.util.Date;
 
-abstract public class Transaction implements BankComponent {
+abstract public class Transaction implements BankComponent, Exchangeable {
 
     // private data members for any Transaction
     private final Account account;
     private final BankUser user;
-    private final Currency value;
     private final Date date;
     private final ID id = new ID();
+
+    private Currency value;
 
     // constructor for a transaction
     public Transaction(Account account, BankUser user, Currency value, Date date) {
@@ -48,15 +49,15 @@ abstract public class Transaction implements BankComponent {
         return value.getValue();
     }
 
-    // returns the Class type of the Currency associated with this transaction
-    public Class<? extends Currency> getCurrencyType() {
-        return value.getClass();
-    }
-
     // toString() implementation for a Transaction
     public String toString() {
         String strRepr = "(" + this.getID() + ")" + ": " + value + " (" + date.toString() + ")";
         return strRepr;
+    }
+
+    // exchanges to another Currency type
+    public void exchangeTo(String currency) {
+        value = value.convertTo(currency);
     }
 
 }

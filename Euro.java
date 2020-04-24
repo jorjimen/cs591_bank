@@ -34,4 +34,9 @@ public class Euro extends Currency {
         return symbol + super.toString();
     }
 
+     // returns string type of the currency
+     public String getStringType() {
+        return "euro";
+    }
+
 }

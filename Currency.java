@@ -43,4 +43,6 @@ abstract class Currency implements BankComponent {
 
     abstract String getSymbol();
 
+    abstract String getStringType();
+
 }
