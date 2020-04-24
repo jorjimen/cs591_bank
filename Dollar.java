@@ -34,4 +34,9 @@ public class Dollar extends Currency {
         return "$" + super.toString();
     }
 
+    // returns string type of the currency
+    public String getStringType() {
+        return "dollar";
+    }
+
 }

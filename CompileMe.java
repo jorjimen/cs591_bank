@@ -6,7 +6,6 @@ public class CompileMe {
 
     public static void main(String[] args) {
         /*
-        // Uncomment to test Currencies
         Currency dollar = new Dollar(53.30);
         System.out.println(dollar.convertTo("euro"));
         System.out.println(dollar.convertTo("yen"));
@@ -21,6 +20,19 @@ public class CompileMe {
         Transaction deposit = new Deposit(new Account(), new BankUser(), new Yen(31044.24), new Date(2020, 03, 11));
         System.out.println(withdrawl.toString() + "\n" + deposit.toString());
         */
+
+        /*
+        Loan loan = new Loan(new Dollar(1200), new Customer(), new Date(), "Audi V8");
+        loan.makePayment(new Euro(783));
+        loan.accumulateInterest();
+        System.out.println(loan);
+        loan.exchangeTo("euro");
+        System.out.println(loan);
+        loan.accumulateInterest();
+        loan.accumulateInterest();
+        System.out.println(loan);
+        */
+
     }
 
 }
