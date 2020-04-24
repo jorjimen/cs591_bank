@@ -14,12 +14,13 @@ public class Dollar extends Currency {
 
     // Returns this currency, converted into another currency object.
     public Currency convertTo(String currency) {
-        if (currency.equals("euro")) {
-            return new Euro(this.getValue() * 0.93);
-        } else if (currency.equals("yen")) {
-            return new Yen(this.getValue() * 107.59);
-        } else {
-            return this;
+        switch (currency) {
+            case "euro":
+                return new Euro(this.getValue() * 0.93);
+            case "yen":
+                return new Yen(this.getValue() * 107.59);
+            default:
+                return this;
         }
     }
 
