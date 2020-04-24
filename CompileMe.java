@@ -1,3 +1,4 @@
+// import java.util.Date;
 
 // class for compilation purposes
 
@@ -15,7 +16,11 @@ public class CompileMe {
         System.out.println(euro.convertTo("dollar"));
         System.out.println(euro.convertTo("yen")); */
 
-
+        /*
+        Transaction withdrawl = new Withdrawl(new Account(), new BankUser(), new Dollar(253.24), new Date(2020, 03, 11));
+        Transaction deposit = new Deposit(new Account(), new BankUser(), new Yen(31044.24), new Date(2020, 03, 11));
+        System.out.println(withdrawl.toString() + "\n" + deposit.toString());
+        */
     }
 
 }

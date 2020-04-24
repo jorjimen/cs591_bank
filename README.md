@@ -26,10 +26,10 @@
 - [X] Dollar
 - [X] Euro
 - [X] Yen
-- [ ] Transaction
-- [ ] Deposit
-- [ ] Withdrawl
-- [ ] Transfer
+- [X] Transaction
+- [X] Deposit
+- [X] Withdrawl
+- [X] Transfer
 - [ ] Loan
 - [ ] Stock
 - [ ] Stock Market
