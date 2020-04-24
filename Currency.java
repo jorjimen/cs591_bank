@@ -6,6 +6,7 @@ abstract class Currency implements BankComponent {
 
     // Monetary value of the currency
     private double value;
+    private final ID id = new ID();
 
     // class constructor
     public Currency(double value) {
@@ -15,6 +16,11 @@ abstract class Currency implements BankComponent {
     // returns the monetary value
     public double getValue() {
         return value;
+    }
+
+    // get unique ID of the Currency
+    public ID getID() {
+        return id;
     }
 
     // toString method for the currency
