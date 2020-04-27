@@ -9,4 +9,10 @@ public class Manager extends BankUser {
         System.out.println(); 
     }
 
+    // a method that shows the daily report on transactions for that day.
+    public void showDailyReport(Date date){
+
+    }
+
+    
 }
