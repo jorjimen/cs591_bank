@@ -18,12 +18,37 @@ public class Customer extends BankUser {
 
     // a method that creates a savings or checking account.
     public void createAccount(String accountType){
-    	
+        Account newAccount;
+        switch (accountType) {
+            case "savings":
+                newAccount = new SavingsAccount();
+                break;
+            case "loan":
+                newAccount = new LoanAccount();
+                break;
+            case "securities":
+                newAccount = new SecuritiesAccount();
+                break;
+            default:
+                System.out.println("We don't support this kind of account now.");
+                return;
+        }
+        if(checkEnoughFee(newAccount.getOpeningFee())){
+            accounts.add(newAccount);
+        }else{
+            System.out.println("Doesn't have enough money to pay the fee of creating account.");
+        }
+        return;
     }
 
     // a method that close a savings or checking accout.
     public void closeAccount(String accountType){
 
+    }
+
+    // a method checks whether the customer can pay the fee.
+    public boolean checkEnoughFee(double requireFee){
+        return true;
     }
 
 	// a method that requests a loan.

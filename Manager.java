@@ -20,5 +20,8 @@ public class Manager extends BankUser {
 
     }
 
-    
+    // a method which let manager to check-up on a specific customer.
+    public void checkUpCustomer(Customer customer){
+        customer.printUserInfo();
+    }    
 }
