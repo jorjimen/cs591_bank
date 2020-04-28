@@ -27,7 +27,7 @@ public class BankUser {
     }
 
     public void setPassword(String password){
-    	this.passowrd = password;
+    	this.password = password;
     }
 
     // a method that prints all the info and details of the bank user
