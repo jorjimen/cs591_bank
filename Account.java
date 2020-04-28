@@ -1,4 +1,5 @@
-import java.util.*; 
+import java.util.*;
+
 abstract class Account implements BankComponent {
     private final ID id = new ID();
 

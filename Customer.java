@@ -2,13 +2,17 @@ import java.util.*;
 
 public class Customer extends BankUser {
 
-	ArrayList<Account> accounts;
+	public Customer(String username, String password) {
+        super(username, password);
+    }
+
+    ArrayList<Account> accounts;
 
 	// a method that prints all the info and details of the customer.
     public void printUserInfo(){
-        System.out.println("Customer ID: " + id); 
-        System.out.println("Customer name: " + username); 
-        System.out.println("Customer password: " + password);
+        System.out.println("Customer ID: " + super.getID());
+        System.out.println("Customer name: " + super.getUsername()); 
+        System.out.println("Customer password: " + super.getPassword());
         System.out.println(); 
     }
 
