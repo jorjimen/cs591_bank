@@ -1,4 +1,4 @@
-// import java.util.Date;
+import java.util.Date;
 
 // class for compilation purposes
 
@@ -23,14 +23,21 @@ public class CompileMe {
 
         /*
         Loan loan = new Loan(new Dollar(1200), new Customer(), new Date(), "Audi V8");
-        loan.makePayment(new Euro(783));
+
+        System.out.println(loan);
         loan.accumulateInterest();
         System.out.println(loan);
+
         loan.exchangeTo("euro");
-        System.out.println(loan);
-        loan.accumulateInterest();
         loan.accumulateInterest();
         System.out.println(loan);
+
+        loan.makePayment(new Dollar(785.32));
+        System.out.println(loan);
+
+        loan.makePayment(new Euro(408.53));
+        System.out.println(loan);
+
         */
 
     }

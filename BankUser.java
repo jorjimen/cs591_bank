@@ -1,5 +1,3 @@
-import java.util.*; 
-
 public class BankUser {
 
 	private final ID id = new ID();
@@ -8,7 +6,12 @@ public class BankUser {
 	private String username;
 
 	// the password of the bank user.
-	private String password;
+    private String password;
+    
+    public BankUser(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
 	public ID getID() {
         return id;
@@ -27,7 +30,7 @@ public class BankUser {
     }
 
     public void setPassword(String password){
-    	this.passowrd = password;
+    	this.password = password;
     }
 
     // a method that prints all the info and details of the bank user
