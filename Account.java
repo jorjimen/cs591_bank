@@ -1,6 +1,6 @@
 import java.util.*;
 
-abstract class Account implements BankComponent {
+abstract class Account implements BankComponent, Exchangeable {
     private final ID id = new ID();
 
     // the type of account
@@ -146,6 +146,11 @@ abstract class Account implements BankComponent {
             System.out.println("This account does not have enough money for this transfer."); 
         }
 
+    }
+
+    // a method to exhchange the account to a different type of currency
+    public void exchangeTo(String currencyType) {
+        amount = amount.convertTo(currencyType); 
     }
 
 }
