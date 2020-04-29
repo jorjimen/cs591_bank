@@ -13,7 +13,7 @@ public class Customer extends BankUser {
     }
 
     // a method that creates a savings or checking account.
-    public void createAccount(String accountType){
+    public void createAccount(String accountType, String currencyType, Currency amount){
         Account newAccount;
         switch (accountType) {
             case "savings":
@@ -30,6 +30,8 @@ public class Customer extends BankUser {
                 return;
         }
         if(checkEnoughFee(newAccount.getOpeningFee())){
+            newAccount.setCurrencyType(currencyType);
+            newAccount.setAmount(amount);
             accounts.add(newAccount);
         }else{
             System.out.println("Doesn't have enough money to pay the fee of creating account.");
