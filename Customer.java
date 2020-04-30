@@ -4,7 +4,7 @@ public class Customer extends BankUser {
 
 	public Customer(String username, String password, Currency startingValue) {
         super(username, password);
-        CheckingAccount firstAccount = new CheckingAccount();
+        CheckingAccount firstAccount = new CheckingAccount("dollar");
         firstAccount.deposit(new Deposit(firstAccount, this, startingValue, new Date()));
         accounts.add(firstAccount);
     }
@@ -24,13 +24,13 @@ public class Customer extends BankUser {
         Account newAccount;
         switch (accountType) {
             case "savings":
-                newAccount = new SavingsAccount();
+                newAccount = new SavingsAccount(currencyType);
                 break;
             case "loan":
-                newAccount = new LoanAccount();
+                newAccount = new LoanAccount(currencyType);
                 break;
             case "securities":
-                newAccount = new SecuritiesAccount();
+                newAccount = new SecuritiesAccount(currencyType);
                 break;
             default:
                 System.out.println("We don't support this kind of account now.");
@@ -52,7 +52,7 @@ public class Customer extends BankUser {
     }
 
     // a method checks whether the customer can pay the fee.
-    public boolean checkEnoughFee(double requireFee){
+    public boolean checkEnoughFee(Currency requireFee){
         return true;
     }
 
