@@ -4,9 +4,12 @@ public class Customer extends BankUser {
 
 	public Customer(String username, String password) {
         super(username, password);
+        CheckingAccount firstAccount = new CheckingAccount();
+        firstAccount.deposit(new Deposit(firstAccount, this, new Dollar(200), new Date()));
+        accounts.add(firstAccount);
     }
 
-    ArrayList<Account> accounts;
+    ArrayList<Account> accounts = new ArrayList<Account>();
 
 	// a method that prints all the info and details of the customer.
     public void printUserInfo(){
