@@ -39,10 +39,6 @@ public class CompileMe {
         System.out.println(loan);
 
         */
-
-        Currency curr = new Dollar(123);
-        System.out.println(curr);
-
     }
 
 }

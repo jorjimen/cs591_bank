@@ -14,13 +14,17 @@ abstract class Account implements BankComponent, Exchangeable {
     private Currency amount; 
 
     // the fee to open the account
-    private double openingFee;
+    private Currency openingFee = new Dollar(50);
 
     // the fee to close the account 
-    private double closingFee;
+    private Currency closingFee = new Dollar(50);
 
     // a collection of all the transactions this account has been involved in 
     private ArrayList<Transaction> transactions; 
+
+    public Account() {
+        this.amount = openingFee;
+    }
 
     public ID getID() {
         return id;
@@ -50,20 +54,12 @@ abstract class Account implements BankComponent, Exchangeable {
         this.amount = amount;
     }
 
-    public double getOpeningFee() {
+    public Currency getOpeningFee() {
         return openingFee;
     }
 
-    public void setOpeningFee(double openingFee) {
-        this.openingFee = openingFee;
-    }
-
-    public double getClosingFee() {
+    public Currency getClosingFee() {
         return closingFee;
-    }
-
-    public void setClosingFee(double closingFee) {
-        this.closingFee = closingFee;
     }
 
     // a method that prints all the info and details of the account 
@@ -150,7 +146,10 @@ abstract class Account implements BankComponent, Exchangeable {
 
     // a method to exhchange the account to a different type of currency
     public void exchangeTo(String currencyType) {
+        this.currencyType = currencyType;
         amount = amount.convertTo(currencyType); 
+        openingFee = openingFee.convertTo(currencyType);
+        closingFee = closingFee.convertTo(currencyType);
     }
 
 }
