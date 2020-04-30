@@ -3,7 +3,8 @@ public class CheckingAccount extends Account{
     // the fee charged to withdraw money from the account
     private double withdrawalFee;
 
-    public CheckingAccount() {
+    public CheckingAccount(String currencyType) {
+        super(currencyType); 
         setAccountType("checking"); 
     }
 
