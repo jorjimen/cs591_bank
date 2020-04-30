@@ -39,7 +39,6 @@ public class CompileMe {
         System.out.println(loan);
 
         */
-
     }
 
 }
