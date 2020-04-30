@@ -2,10 +2,10 @@ import java.util.*;
 
 public class Customer extends BankUser {
 
-	public Customer(String username, String password) {
+	public Customer(String username, String password, Currency startingValue) {
         super(username, password);
         CheckingAccount firstAccount = new CheckingAccount();
-        firstAccount.deposit(new Deposit(firstAccount, this, new Dollar(200), new Date()));
+        firstAccount.deposit(new Deposit(firstAccount, this, startingValue, new Date()));
         accounts.add(firstAccount);
     }
 
