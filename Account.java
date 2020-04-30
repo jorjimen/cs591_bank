@@ -14,13 +14,13 @@ abstract class Account implements BankComponent, Exchangeable {
     private Currency amount; 
 
     // the fee to open the account
-    private Currency openingFee = new Dollar(50);
+    private Currency openingFee = new Dollar(-50);
 
     // the fee to close the account 
-    private Currency closingFee = new Dollar(50);
+    private Currency closingFee = new Dollar(-50);
 
     // a collection of all the transactions this account has been involved in 
-    private ArrayList<Transaction> transactions; 
+    private ArrayList<Transaction> transactions = new ArrayList<Transaction>(); 
 
     public Account(String currencyType) {
         setCurrencyType(currencyType); 
@@ -75,7 +75,7 @@ abstract class Account implements BankComponent, Exchangeable {
         for (Transaction t : transactions) {
             System.out.println(t);
         }
-        System.out.println(); 
+        System.out.println();  
     }
 
     // a method to make a deposit to an account 
@@ -121,7 +121,7 @@ abstract class Account implements BankComponent, Exchangeable {
             transactions.add(withdrawl); // add this transaction to the account's transactions
             transactionSuccessful = true; 
         } else { // if the account does not have enough money for the withdrawl to take place
-            System.out.println("This account does not have enough money for this withdrawl."); 
+            System.out.println("This account does not have enough money for this transaction."); 
         }
         return transactionSuccessful; 
     }
@@ -139,10 +139,7 @@ abstract class Account implements BankComponent, Exchangeable {
             Deposit deposit = new Deposit(transfer.getAccount(), transfer.getUser(), transfer.getValue(), transfer.getDate()); 
             transfer.getAccountTo().deposit(deposit); // deposit the money to the other account 
             transactions.add(transfer); // add this transaction to the account's transactions
-        } else { // if the account does not have enough money for the transaction to take place 
-            System.out.println("This account does not have enough money for this transfer."); 
         }
-
     }
 
     // a method to exhchange the account to a different type of currency
@@ -151,6 +148,11 @@ abstract class Account implements BankComponent, Exchangeable {
         amount = amount.convertTo(currencyType); 
         openingFee = openingFee.convertTo(currencyType);
         closingFee = closingFee.convertTo(currencyType);
+    }
+
+    public String toString() {
+        String name = accountType.substring(0,1).toUpperCase() + accountType.substring(1) + " Account "; 
+        return name; 
     }
 
 }
