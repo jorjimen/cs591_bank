@@ -31,7 +31,11 @@ public class Yen extends Currency {
 
     // Yen toString() method
     public String toString() {
-        return symbol + super.toString();
+        if (getValue() < 0) {
+            return "-" + symbol + super.toString().substring(1);
+        } else {
+            return symbol + super.toString();
+        }
     }
 
      // returns string type of the currency

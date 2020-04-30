@@ -31,7 +31,11 @@ public class Dollar extends Currency {
 
     // Dollar toString() method
     public String toString() {
-        return "$" + super.toString();
+        if (getValue() < 0) {
+            return "-" + symbol + super.toString().substring(1);
+        } else {
+            return symbol + super.toString();
+        }
     }
 
     // returns string type of the currency

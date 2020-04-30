@@ -40,6 +40,9 @@ public class CompileMe {
 
         */
 
+        Currency curr = new Dollar(123);
+        System.out.println(curr);
+
     }
 
 }
