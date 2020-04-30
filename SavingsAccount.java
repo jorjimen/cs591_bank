@@ -7,7 +7,8 @@ public class SavingsAccount extends Account {
     // will earn on their savings 
     private double interestRate;
 
-    public SavingsAccount() {
+    public SavingsAccount(String currencyType) {
+        super(currencyType); 
         setAccountType("savings"); 
     }
 

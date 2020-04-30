@@ -4,7 +4,8 @@ public class LoanAccount extends Account {
     // the account has taken out
     private ArrayList<Loan> loans;
 
-    public LoanAccount() {
+    public LoanAccount(String currencyType) {
+        super(currencyType); 
         setAccountType("loan"); 
     }
 

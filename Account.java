@@ -22,8 +22,9 @@ abstract class Account implements BankComponent, Exchangeable {
     // a collection of all the transactions this account has been involved in 
     private ArrayList<Transaction> transactions; 
 
-    public Account() {
-        this.amount = openingFee;
+    public Account(String currencyType) {
+        setCurrencyType(currencyType); 
+        this.amount = openingFee.convertTo(currencyType);
     }
 
     public ID getID() {
