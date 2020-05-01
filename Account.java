@@ -1,6 +1,7 @@
 import java.util.*;
 
 abstract class Account implements BankComponent, Exchangeable {
+
     private final ID id = new ID();
 
     // the type of account
@@ -33,6 +34,10 @@ abstract class Account implements BankComponent, Exchangeable {
 
     public String getAccountType() {
         return accountType;
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
     }
 
     public void setAccountType(String accountType) {
