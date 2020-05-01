@@ -2,6 +2,8 @@ import java.util.*;
 
 public class Customer extends BankUser {
 
+    ArrayList<Account> accounts = new ArrayList<Account>();
+
 	public Customer(String username, String password, Currency startingValue) {
         super(username, password);
         CheckingAccount firstAccount = new CheckingAccount("dollar");
@@ -9,66 +11,78 @@ public class Customer extends BankUser {
         accounts.add(firstAccount);
     }
 
-    ArrayList<Account> accounts = new ArrayList<Account>();
-
-	// a method that prints all the info and details of the customer.
-    public void printUserInfo(){
-        System.out.println("Customer ID: " + super.getID());
-        System.out.println("Customer name: " + super.getUsername()); 
-        System.out.println("Customer password: " + super.getPassword());
-        System.out.println(); 
+    // method for opening an account
+    public void openAccount(Account account) {
+        accounts.add(account);
     }
 
-    // a method that creates a savings or checking account.
-    public void createAccount(String accountType, String currencyType, Currency amount){
-        Account newAccount;
-        switch (accountType) {
-            case "savings":
-                newAccount = new SavingsAccount(currencyType);
-                break;
-            case "loan":
-                newAccount = new LoanAccount(currencyType);
-                break;
-            case "securities":
-                newAccount = new SecuritiesAccount(currencyType);
-                break;
-            default:
-                System.out.println("We don't support this kind of account now.");
-                return;
+    // get all accounts
+    public ArrayList<Account> getAllAccounts() {
+        return accounts;
+    }
+
+    // gets an account by index
+    public Account getAccountByIndex(int i) {
+        return accounts.get(i);
+    }
+
+    // close an account
+    public boolean closeAccount(int i){
+        Account toClose = accounts.get(i);
+        if (toClose.getAmount().getValue() + toClose.getClosingFee().getValue() < 0) {
+            return false;
+        } else {
+            toClose.setAmount(new Dollar(toClose.getAmount().getValue() + toClose.getClosingFee().getValue()).convertTo(toClose.getCurrencyType()));
+            accounts.remove(i);
+            return true;
         }
-        if(checkEnoughFee(newAccount.getOpeningFee())){
-            newAccount.setCurrencyType(currencyType);
-            newAccount.setAmount(amount);
-            accounts.add(newAccount);
-        }else{
-            System.out.println("Doesn't have enough money to pay the fee of creating account.");
-        }
-        return;
-    }
-
-    // a method that close a savings or checking accout.
-    public void closeAccount(String accountType){
-
-    }
-
-    // a method checks whether the customer can pay the fee.
-    public boolean checkEnoughFee(Currency requireFee){
-        return true;
     }
 
 	// a method that requests a loan.
-    public void requestLoan(){
-
+    public boolean requestLoan(Currency amount, String collateral){
+        int index = -1;
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i) instanceof LoanAccount) {
+                index = i;
+            }
+        }
+        if (index != -1) {
+            LoanAccount loanAccount = (LoanAccount) accounts.get(index);
+            loanAccount.addLoan(new Loan(amount, this, new Date(), collateral));
+        }
+        return true;
     }
 
     // a method that shows transactions of the user.
-    public void showTransaction(){
+    public ArrayList<Transaction> showTransactionForAccountAtIndex(int i){
+        return accounts.get(i).getTransactions();
+    }
 
+    // gets all the transactions associated with a user
+    public ArrayList<Transaction> getAllTransactions() {
+        ArrayList<Transaction> allTransactions = new ArrayList<Transaction>();
+        for (Account acc : accounts) {
+            allTransactions.addAll(acc.getTransactions());
+        }
+        return allTransactions;
     }
 
     // a method that shows current balances of the user.
-    public void showCurrentBalances(){
-
+    public Currency showCurrentBalances(String currencyType){
+        double value = 0;
+        for (Account account : accounts) {
+            Currency balance = account.getAmount();
+            value += balance.convertTo(currencyType).getValue();
+        }
+        switch (currencyType) {
+            case "dollar":
+                return new Dollar(value);
+            case "yen":
+                return new Yen(value);
+            case "euro":
+                return new Euro(value);
+        }
+        return new Dollar(value);
     }
 
 }
