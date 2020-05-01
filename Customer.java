@@ -49,8 +49,10 @@ public class Customer extends BankUser {
         if (index != -1) {
             LoanAccount loanAccount = (LoanAccount) accounts.get(index);
             loanAccount.addLoan(new Loan(amount, this, new Date(), collateral));
+            return true;
+        } else {
+            return false;
         }
-        return true;
     }
 
     // a method that shows transactions of the user.
