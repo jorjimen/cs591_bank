@@ -3,7 +3,7 @@ import java.util.Date;
 // class for compilation purposes
 
 public class CompileMe {
-
+/*
     public static void main(String[] args) {
         /*
         Currency dollar = new Dollar(53.30);
@@ -85,5 +85,3 @@ public class CompileMe {
         account2.transfer(withdrawl3); 
         */
     }
-
-}

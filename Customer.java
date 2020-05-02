@@ -3,12 +3,13 @@ import java.util.*;
 public class Customer extends BankUser {
 
     ArrayList<Account> accounts = new ArrayList<Account>();
+    AccountFactory accountFactory = new AccountFactory();
 
 	public Customer(String username, String password, Currency startingValue) {
         super(username, password);
         CheckingAccount firstAccount = new CheckingAccount("dollar");
         firstAccount.deposit(new Deposit(firstAccount, this, startingValue, new Date()));
-        accounts.add(firstAccount);
+        openAccount(firstAccount);
     }
 
     // method for opening an account
