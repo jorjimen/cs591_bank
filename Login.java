@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class Login extends JFrame implements ActionListener {
 
-    private Bank bank;
+    private Bank bank; 
     private JPanel panel = new JPanel(new GridLayout(3, 1));
     private JLabel usernameLabel = new JLabel("USERNAME: ");
     private JLabel passwordLabel = new JLabel("PASSWORD: ");
@@ -29,7 +29,7 @@ public class Login extends JFrame implements ActionListener {
         submit.addActionListener(this);
         add(panel, BorderLayout.CENTER);
         setTitle("Bank Login");
-        setSize(400, 120);
+        setSize(500, 150);
         setVisible(true);
 
     }
@@ -47,6 +47,7 @@ public class Login extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "You have logged in as a manager!");
             status = true;
             bank.managerHandler();
+            ManagerFrame frame = new ManagerFrame(bank); 
         } else {
            for (Customer customer : customers) {
              if (userName.trim().equals(customer.getUsername()) && password.trim().equals(customer.getPassword())) {
@@ -55,12 +56,18 @@ public class Login extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "You have logged in as a user!");
                 status = true;
                 bank.userHandler();
+                CustomerFrame frame = new CustomerFrame(bank, customer); 
              }
            }
         }
         if (!status) {
-            JOptionPane.showMessageDialog(null, "Authenticatino failed! The user and password do not exist.");
+            JOptionPane.showMessageDialog(null, "Authentication failed! The user and password do not exist.");
         }
+    }
+
+    public static void main(String[] args) {
+        Bank bank = Bank.getInstance(); 
+        Login login = new Login(bank); 
     }
 
 }
