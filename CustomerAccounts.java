@@ -114,7 +114,7 @@ public class CustomerAccounts  extends JFrame implements ActionListener {
                 case "savings":
                     SavingsAccount savingsAccount = new SavingsAccount("doller");
                     result = JOptionPane.showConfirmDialog(null,
-                            "Do you want to open a checking account?\nThis operation will charge $" + savingsAccount.getOpeningFee().getValue() + " for service fee",
+                            "Do you want to open a savings account?\nThis operation will charge $" + savingsAccount.getOpeningFee().getValue() + " for service fee",
                             "Confirm",
                             JOptionPane.YES_NO_OPTION);
                     if (result == 0) {//YES
@@ -125,7 +125,7 @@ public class CustomerAccounts  extends JFrame implements ActionListener {
                 case "securities":
                     SecuritiesAccount securitiesAccount = new SecuritiesAccount("doller");
                     result = JOptionPane.showConfirmDialog(null,
-                            "Do you want to open a checking account?\nThis operation will charge $" + securitiesAccount.getOpeningFee().getValue() + " for service fee",
+                            "Do you want to open a securities account?\nThis operation will charge $" + securitiesAccount.getOpeningFee().getValue() + " for service fee",
                             "Confirm",
                             JOptionPane.YES_NO_OPTION);
                     if (result == 0) {//YES
@@ -136,7 +136,7 @@ public class CustomerAccounts  extends JFrame implements ActionListener {
                 case "loan":
                     LoanAccount loanAccount = new LoanAccount("doller");
                     result = JOptionPane.showConfirmDialog(null,
-                            "Do you want to open a checking account?\nThis operation will charge $" + loanAccount.getOpeningFee().getValue() + " for service fee",
+                            "Do you want to open a loan account?\nThis operation will charge $" + loanAccount.getOpeningFee().getValue() + " for service fee",
                             "Confirm",
                             JOptionPane.YES_NO_OPTION);
                     if (result == 0) {//YES
