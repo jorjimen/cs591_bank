@@ -1,4 +1,3 @@
-package bank;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
@@ -13,11 +12,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
-/**
- * @Des ：
- * @Author ： 
- * @Date ： 2020/5/3  11:22
- **/
+
 public class CustomerAccounts  extends JFrame implements ActionListener {
 
     public static int FORM_WIDTH = 450;
