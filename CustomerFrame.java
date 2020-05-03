@@ -1,3 +1,5 @@
+package bank;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.*;
@@ -49,6 +51,8 @@ public class CustomerFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == viewAccount) {
             JOptionPane.showMessageDialog(rootPane, "View Account Details button clicked");
+            this.dispose();
+            new CustomerAccounts(this,customer);
         } else if (ae.getSource() == deposit) {
             JOptionPane.showMessageDialog(rootPane, "Deposit button clicked");
         } else if (ae.getSource() == withdraw) {
