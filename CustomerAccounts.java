@@ -101,7 +101,7 @@ public class CustomerAccounts  extends JFrame implements ActionListener {
             int result = 1;
             switch (cmbValue){
                 case "checking":
-                    CheckingAccount checkingAccount = new CheckingAccount("doller");
+                    CheckingAccount checkingAccount = new CheckingAccount("dollar");
                     result = JOptionPane.showConfirmDialog(null,
                             "Do you want to open a checking account?\nThis operation will charge $" + checkingAccount.getOpeningFee().getValue() + " for service fee",
                             "Confirm",
@@ -112,7 +112,7 @@ public class CustomerAccounts  extends JFrame implements ActionListener {
                     }
                     break;
                 case "savings":
-                    SavingsAccount savingsAccount = new SavingsAccount("doller");
+                    SavingsAccount savingsAccount = new SavingsAccount("dollar");
                     result = JOptionPane.showConfirmDialog(null,
                             "Do you want to open a savings account?\nThis operation will charge $" + savingsAccount.getOpeningFee().getValue() + " for service fee",
                             "Confirm",
@@ -123,7 +123,7 @@ public class CustomerAccounts  extends JFrame implements ActionListener {
                     }
                     break;
                 case "securities":
-                    SecuritiesAccount securitiesAccount = new SecuritiesAccount("doller");
+                    SecuritiesAccount securitiesAccount = new SecuritiesAccount("dollar");
                     result = JOptionPane.showConfirmDialog(null,
                             "Do you want to open a securities account?\nThis operation will charge $" + securitiesAccount.getOpeningFee().getValue() + " for service fee",
                             "Confirm",

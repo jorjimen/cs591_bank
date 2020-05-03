@@ -7,15 +7,14 @@ public class Bank {
     static private ArrayList<Customer> customers = new ArrayList();
 
     private Bank() {
-        persist();
         new Login(this);
     }
 
     public static Bank getInstance() {
         if (single_instance == null) {
             single_instance = new Bank(); 
+            single_instance.addCustomers();
         }
-        single_instance.addCustomers();
         return single_instance;
     }
 
@@ -41,7 +40,8 @@ public class Bank {
 
     // a method to add a few customers to the bank to start off with 
     public void addCustomers() {
-        Currency currency1 = new Dollar(120.00); 
+
+        Currency currency1 = new Dollar(5000.00); 
         Currency currency2 = new Euro(140.00); 
         Currency currency3 = new Yen(160.00); 
 
@@ -52,6 +52,24 @@ public class Bank {
         customers.add(customer1); 
         customers.add(customer2); 
         customers.add(customer3); 
+
+        Account ac1 = new SavingsAccount("dollar");
+        Account ac2 = new CheckingAccount("yen");
+        Account ac3 = new SavingsAccount("euro");
+
+        customers.get(0).openAccount(ac1);
+        customers.get(0).openAccount(ac2);
+        customers.get(0).openAccount(ac3);
+
+        ac1.deposit(new Deposit(ac1, customers.get(0), new Dollar(100), new Date()));
+        ac1.deposit(new Deposit(ac1, customers.get(0), new Yen(100), new Date()));
+        ac1.deposit(new Deposit(ac1, customers.get(0), new Euro(550), new Date()));
+        ac1.deposit(new Deposit(ac1, customers.get(0), new Euro(420.34), new Date()));
+        ac1.deposit(new Deposit(ac1, customers.get(0), new Dollar(5.30), new Date()));
+        ac1.withdraw(new Withdrawl(ac1, customers.get(0), new Dollar(5.30), new Date()));
+        ac1.withdraw(new Withdrawl(ac1, customers.get(0), new Euro(14.30), new Date()));
+        ac1.withdraw(new Withdrawl(ac1, customers.get(0), new Dollar(12.30), new Date()));
+
     }
 
 }
