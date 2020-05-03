@@ -67,7 +67,9 @@ public class Login extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         Bank bank = Bank.getInstance(); 
-        Login login = new Login(bank); 
+        // PersistanceHandler p = new PersistanceHandler();
+        // p.loadState();
+        // p.saveState();
     }
 
 }
