@@ -7,14 +7,14 @@ ACCOUNT 1
 savings dollar
 dollar 1061.59
 START TRANSACTIONS
-deposit dollar 100.0 Sun May 03 23:48:34 EDT 2020
-deposit yen 100.0 Sun May 03 23:48:34 EDT 2020
-deposit euro 550.0 Sun May 03 23:48:34 EDT 2020
-deposit euro 420.34 Sun May 03 23:48:34 EDT 2020
-deposit dollar 5.3 Sun May 03 23:48:34 EDT 2020
-withdrawl dollar 5.3 Sun May 03 23:48:34 EDT 2020
-withdrawl euro 14.3 Sun May 03 23:48:34 EDT 2020
-withdrawl dollar 12.3 Sun May 03 23:48:34 EDT 2020
+deposit dollar 100.0 Mon May 04 11:55:52 EDT 2020
+deposit yen 100.0 Mon May 04 11:55:52 EDT 2020
+deposit euro 550.0 Mon May 04 11:55:52 EDT 2020
+deposit euro 420.34 Mon May 04 11:55:52 EDT 2020
+deposit dollar 5.3 Mon May 04 11:55:52 EDT 2020
+withdrawl dollar 5.3 Mon May 04 11:55:52 EDT 2020
+withdrawl euro 14.3 Mon May 04 11:55:52 EDT 2020
+withdrawl dollar 12.3 Mon May 04 11:55:52 EDT 2020
 END TRANSACTIONS
 ACCOUNT 2
 checking yen

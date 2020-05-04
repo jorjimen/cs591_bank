@@ -6,7 +6,6 @@ public class StockMarket implements BankComponent {
 
     public StockMarket() {
         this.stocks = new ArrayList<>(); 
-        this.stocks = addStocks(); 
     }
 
     public ID getID() {
@@ -21,7 +20,7 @@ public class StockMarket implements BankComponent {
         this.stocks = stocks;
     }
 
-    public ArrayList<Stock> addStocks() {
+    public ArrayList<Stock> addDefaultStocks() {
         Stock amzn = new Stock("Amazon", "AMZN", new Dollar(2474.00), 100); 
         Stock fb = new Stock("Facebook", "FB", new Dollar(204.71), 100); 
         Stock msft = new Stock("Microsoft", "MSFT", new Dollar(174.57), 100); 

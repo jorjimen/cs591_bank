@@ -3,14 +3,13 @@ import java.io.*;
 
 public class PersistanceHandler {
 
-    public PersistanceHandler() {
-
-    }
-
     public void saveState() {
         File index = new File("StoredData/");
         for (File file : index.listFiles()) {
             if (file != null) {
+                if (file.getName().equals("StockData")) {
+                    continue;
+                }
                 if (file.isDirectory()) {
                     for (File inner : file.listFiles()) {
                         inner.delete();
@@ -23,9 +22,29 @@ public class PersistanceHandler {
         }
         Bank bank = Bank.getInstance();
         Manager manager = bank.getManager();
+        StockMarket stockMarket = bank.getStockMarket();
+        persistStockMarket(stockMarket.getStocks());
         ArrayList<Customer> customers = bank.getCustomers();
         for (Customer customer : customers) {
             persistCustomer(customer);
+        }
+    }
+
+    private void persistStockMarket(ArrayList<Stock> stocks) {
+        String path = "StoredData/StockData/stocks.txt";
+        try {
+            FileWriter writer = new FileWriter(path);
+            for (Stock stock : stocks) {
+                // String name, String ticker, Currency currentPrice, int volume
+                String name = stock.getName();
+                String ticker = stock.getTicker();
+                Currency currentPrice = stock.getCurrentPrice();
+                int volume = stock.getVolume();
+                writer.write(name + " " + ticker + " " + currentPrice.getStringType() + " " + Double.toString(currentPrice.getValue()) + " " + Integer.toString(volume) + "\n");
+            }
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("error has occured");
         }
     }
 
@@ -67,12 +86,38 @@ public class PersistanceHandler {
         File[] files = new File("StoredData/").listFiles();
         for (File file : files) {
             if (!(file.getName().equals(".DS_Store"))) {
-                Customer current_customer = new Customer(file.getName().split("_")[0], file.getName().split("_")[1], new Dollar(5));
-                current_customer.getAccounts().remove(0);
-                current_customer.accounts = parseAccounts(file, current_customer);
-                Bank.getInstance().getCustomers().add(current_customer);
+                if (file.getName().equals("StockData")) {
+                    ArrayList<Stock> stocks = loadStocks(file);
+                    Bank.getInstance().getStockMarket().setStocks(stocks);;
+                } else {
+                    Customer current_customer = new Customer(file.getName().split("_")[0], file.getName().split("_")[1], new Dollar(5));
+                    current_customer.getAccounts().remove(0);
+                    current_customer.accounts = parseAccounts(file, current_customer);
+                    Bank.getInstance().getCustomers().add(current_customer);
+                }
             }
         }
+    }
+
+    private ArrayList<Stock> loadStocks(File file) {
+        ArrayList<Stock> stocks = new ArrayList<Stock>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file.getPath() + "/stocks.txt"));
+            String data = reader.readLine();
+            while (data != null) {
+                String[] split = data.split(" ");
+                String name = split[0];
+                String ticker = split[1];
+                Currency currentPrice = parseCurrency(split[2], split[3]);
+                int volume = Integer.parseInt(split[4]);
+                stocks.add(new Stock(name, ticker, currentPrice, volume));
+                data = reader.readLine();
+            }
+            reader.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+        return stocks;
     }
 
     private ArrayList<Account> parseAccounts(File file, Customer customer) {
@@ -152,5 +197,21 @@ public class PersistanceHandler {
         } else {
             return new Transfer(account, customer, currency, new Date(), account);
         }
+    }
+
+    private Currency parseCurrency(String split_one, String split_two) {
+        Currency currentValue = new Dollar(1);
+        switch (split_one) {
+            case "dollar":
+                currentValue = new Dollar(Double.parseDouble(split_two));
+                break;
+            case "euro":
+                currentValue = new Euro(Double.parseDouble(split_two));
+                break;
+            case "yen":
+                currentValue = new Euro(Double.parseDouble(split_two));
+                break;
+        }
+        return currentValue;
     }
 }
