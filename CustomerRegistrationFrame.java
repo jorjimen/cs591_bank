@@ -50,7 +50,9 @@ public class CustomerRegistrationFrame extends JFrame implements ActionListener 
         } else {
             Currency initialDeposit = new Dollar(0.00); 
             Customer newCustomer = new Customer(username, password, initialDeposit); 
-            bank.getCustomers().add(newCustomer); 
+            bank.getCustomers().add(newCustomer);
+            PersistanceHandler p = new PersistanceHandler();
+            p.saveState();
             JOptionPane.showMessageDialog(rootPane, username + " has been successfuly registered!");
         }
     }
