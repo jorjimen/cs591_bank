@@ -25,7 +25,7 @@ public class StockMarketFrame extends JFrame {
         this.table = new JTable(data,columns); 
         panel.add(titleLabel); 
         panel.add(new JScrollPane(table)); 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
         add(panel, BorderLayout.CENTER); 
         setTitle("Stock Market Details"); 
         setSize(600, 500); 

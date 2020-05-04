@@ -31,7 +31,7 @@ public class CustomerRegistrationFrame extends JFrame implements ActionListener 
         panel.add(confirmPasswordTextField); 
         panel.add(register); 
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         register.addActionListener(this);
         add(panel, BorderLayout.CENTER);
@@ -50,7 +50,9 @@ public class CustomerRegistrationFrame extends JFrame implements ActionListener 
         } else {
             Currency initialDeposit = new Dollar(0.00); 
             Customer newCustomer = new Customer(username, password, initialDeposit); 
-            bank.getCustomers().add(newCustomer); 
+            bank.getCustomers().add(newCustomer);
+            PersistanceHandler p = new PersistanceHandler();
+            p.saveState();
             JOptionPane.showMessageDialog(rootPane, username + " has been successfuly registered!");
         }
     }

@@ -14,7 +14,7 @@ public class Bank {
     public static Bank getInstance() {
         if (single_instance == null) {
             single_instance = new Bank(); 
-            single_instance.addCustomers();
+            // single_instance.addCustomers();
         }
         return single_instance;
     }

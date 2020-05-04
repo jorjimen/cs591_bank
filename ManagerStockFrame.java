@@ -20,7 +20,7 @@ public class ManagerStockFrame extends JFrame implements ActionListener {
         panel.add(adjustPrice); 
         panel.add(addStock); 
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
 
         viewMarket.addActionListener(this);
         adjustPrice.addActionListener(this);
