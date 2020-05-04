@@ -1,10 +1,2 @@
-Amazon AMZN dollar 2474.0 100
-Facebook FB dollar 204.71 100
-Microsoft MSFT dollar 174.57 100
-Alphabet GOOGL dollar 1317.32 100
-Alibaba BABA dollar 194.48 100
-Fidelity FIS dollar 26.01 100
-Salesforce CRM dollar 156.37 100
-Mastercard MA dollar 268.74 100
-Visa V dollar 175.57 100
-Netflix NFLX dollar 415.27 100
+Facebook FB dollar 123.0 100
+Amazon AMZ dollar 200.0 100

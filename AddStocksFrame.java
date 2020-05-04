@@ -48,8 +48,9 @@ public class AddStocksFrame extends JFrame implements ActionListener {
         int volume = Integer.parseInt(sharesField.getText()); 
 
         Stock newStock = new Stock(name, ticker, new Dollar(price), volume); 
-        bank.getStockMarket().getStocks().add(newStock); 
-
+        bank.getStockMarket().getStocks().add(newStock);
+        PersistanceHandler p = new PersistanceHandler();
+        p.saveState(); 
         JOptionPane.showMessageDialog(rootPane, "Stock " + ticker + " has successfully been added to the Stock Market!");
     }
 
