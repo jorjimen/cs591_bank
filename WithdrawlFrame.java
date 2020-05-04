@@ -99,7 +99,8 @@ public class WithdrawlFrame extends JFrame  implements ActionListener {
                         break;
                 }
                 acc.withdraw(withdrawl);
-
+                PersistanceHandler p = new PersistanceHandler();
+                p.saveState();
                 closeFrame();
                 customerFrame.setVisible(true);
             }

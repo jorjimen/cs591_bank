@@ -56,7 +56,7 @@ public class Login extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "You have logged in as a user!");
                 status = true;
                 bank.userHandler();
-                CustomerFrame frame = new CustomerFrame(bank, customer); 
+                CustomerFrame frame = new CustomerFrame(this, bank, customer); 
              }
            }
         }
