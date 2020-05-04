@@ -42,16 +42,15 @@ public class CustomerFrame extends JFrame implements ActionListener {
         logOut.addActionListener(this);
 
         add(panel, BorderLayout.CENTER);
-        setTitle("Bank Login");
+        setTitle("Customer Login");
         setSize(500, 150);
         setVisible(true);
     }
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == viewAccount) {
-            JOptionPane.showMessageDialog(rootPane, "View Account Details button clicked");
             this.dispose();
-            new CustomerAccounts(this,customer);
+            new CustomerAccountsFrame(this,customer);
         } else if (ae.getSource() == deposit) {
             JOptionPane.showMessageDialog(rootPane, "Deposit button clicked");
         } else if (ae.getSource() == withdraw) {

@@ -3,6 +3,7 @@ import java.util.*;
 public class Bank {
 
     private static Bank single_instance = null; 
+    private static StockMarket stockMarket = new StockMarket(); 
     static private Manager manager = new Manager("John Doe", "123456");
     static private ArrayList<Customer> customers = new ArrayList();
 
@@ -70,6 +71,14 @@ public class Bank {
         ac1.withdraw(new Withdrawl(ac1, customers.get(0), new Euro(14.30), new Date()));
         ac1.withdraw(new Withdrawl(ac1, customers.get(0), new Dollar(12.30), new Date()));
 
+    }
+
+    public static StockMarket getStockMarket() {
+        return stockMarket;
+    }
+
+    public static void setStockMarket(StockMarket stockMarket) {
+        Bank.stockMarket = stockMarket;
     }
 
 }

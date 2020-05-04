@@ -1,0 +1,28 @@
+ACCOUNT 0
+checking dollar
+dollar -50.0
+START TRANSACTIONS
+END TRANSACTIONS
+ACCOUNT 1
+savings dollar
+dollar 1061.59
+START TRANSACTIONS
+deposit dollar 100.0 Sun May 03 23:48:34 EDT 2020
+deposit yen 100.0 Sun May 03 23:48:34 EDT 2020
+deposit euro 550.0 Sun May 03 23:48:34 EDT 2020
+deposit euro 420.34 Sun May 03 23:48:34 EDT 2020
+deposit dollar 5.3 Sun May 03 23:48:34 EDT 2020
+withdrawl dollar 5.3 Sun May 03 23:48:34 EDT 2020
+withdrawl euro 14.3 Sun May 03 23:48:34 EDT 2020
+withdrawl dollar 12.3 Sun May 03 23:48:34 EDT 2020
+END TRANSACTIONS
+ACCOUNT 2
+checking yen
+yen -5379.5
+START TRANSACTIONS
+END TRANSACTIONS
+ACCOUNT 3
+savings euro
+euro -46.5
+START TRANSACTIONS
+END TRANSACTIONS

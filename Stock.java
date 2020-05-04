@@ -48,8 +48,8 @@ public class Stock implements BankComponent, Exchangeable {
         return currentPrice;
     }
 
-    public void setCurrentPrice(Currency openPrice) {
-        this.openPrice = openPrice;
+    public void setCurrentPrice(Currency currentPrice) {
+        this.currentPrice = currentPrice;
     }
 
     public Currency getOpenPrice() {
