@@ -18,20 +18,27 @@ public class CustomerFrame extends JFrame implements ActionListener {
     private JButton tradeStocks = new JButton("Trade Stocks"); 
     private JButton logOut = new JButton("Log Out"); 
 
-    public CustomerFrame(Bank bank, Customer customer) {
+    private Login login;
+
+    public CustomerFrame(Login login,Bank bank, Customer customer) {
         this.bank = bank; 
-        this.customer = customer; 
-        
-        JLabel welcomeLabel = new JLabel("Welcome " + customer.getUsername() + "!"); 
-        panel.add(welcomeLabel); 
-        panel.add(messageLabel);
-        panel.add(viewAccount);
-        panel.add(deposit);
-        panel.add(withdraw);
-        panel.add(requestLoan);
-        panel.add(tradeStocks);
-        panel.add(logOut);  
-    
+        this.customer = customer;
+        this.login = login;
+        JLabel welcomeLabel = new JLabel("Welcome " + customer.getUsername() + "!");
+        final JPanel panel1 = new JPanel();
+        panel1.add(welcomeLabel);
+        panel1.add(messageLabel);
+
+        final JPanel panel3 = new JPanel(new GridLayout(3, 1));
+
+        panel3.add(viewAccount);
+        panel3.add(deposit);
+        panel3.add(withdraw);
+        panel3.add(requestLoan);
+        panel3.add(tradeStocks);
+        panel3.add(logOut);
+        panel.add(panel1);
+        panel.add(panel3);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         viewAccount.addActionListener(this);
@@ -43,7 +50,7 @@ public class CustomerFrame extends JFrame implements ActionListener {
 
         add(panel, BorderLayout.CENTER);
         setTitle("Customer Login");
-        setSize(500, 150);
+        setSize(450, 450);
         setVisible(true);
     }
 
@@ -52,15 +59,21 @@ public class CustomerFrame extends JFrame implements ActionListener {
             this.dispose();
             new CustomerAccountsFrame(this,customer);
         } else if (ae.getSource() == deposit) {
-            JOptionPane.showMessageDialog(rootPane, "Deposit button clicked");
+            this.dispose();
+            new DepositFrame(this,customer);
+//            JOptionPane.showMessageDialog(rootPane, "Deposit button clicked");
         } else if (ae.getSource() == withdraw) {
-            JOptionPane.showMessageDialog(rootPane, "Withdraw button clicked");
+            this.dispose();
+            new WithdrawlFrame(this,customer);
+//            JOptionPane.showMessageDialog(rootPane, "Withdraw button clicked");
         } else if (ae.getSource() == requestLoan) {
             JOptionPane.showMessageDialog(rootPane, "Request Loan button clicked");
         } else if (ae.getSource() == tradeStocks) {
             JOptionPane.showMessageDialog(rootPane, "Trade Stocks button clicked");
         } else if (ae.getSource() == logOut) {
             JOptionPane.showMessageDialog(rootPane, "You have logged out.");
+            this.dispose();
+            login.setVisible(true);
         }
 
     }
