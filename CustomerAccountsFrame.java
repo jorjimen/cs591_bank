@@ -13,7 +13,7 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 
-public class CustomerAccounts  extends JFrame implements ActionListener {
+public class CustomerAccountsFrame extends JFrame implements ActionListener {
 
     public static int FORM_WIDTH = 450;
     public static int FORM_Height = 600;
@@ -36,7 +36,7 @@ public class CustomerAccounts  extends JFrame implements ActionListener {
         return this.customer;
     }
 
-    public CustomerAccounts(CustomerFrame customerFrame , Customer customer ){
+    public CustomerAccountsFrame(CustomerFrame customerFrame , Customer customer ){
         initUI();
         this.customer = customer;
         this.customerFrame = customerFrame;

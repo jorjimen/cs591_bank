@@ -9,8 +9,6 @@ public class Customer extends BankUser {
 	public Customer(String username, String password, Currency startingValue) {
         super(username, password);
         CheckingAccount firstAccount = new CheckingAccount("dollar");
-        firstAccount.setAmount(new Dollar(500.0));
-        firstAccount.deposit(new Deposit(firstAccount, this, startingValue, new Date()));
         openAccount(firstAccount);
     }
 

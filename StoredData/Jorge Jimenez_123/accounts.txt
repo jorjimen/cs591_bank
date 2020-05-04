@@ -1,0 +1,5 @@
+ACCOUNT 0
+checking dollar
+dollar -50.0
+START TRANSACTIONS
+END TRANSACTIONS
