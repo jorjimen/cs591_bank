@@ -31,7 +31,7 @@ public class CustomerRegistrationFrame extends JFrame implements ActionListener 
         panel.add(confirmPasswordTextField); 
         panel.add(register); 
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         register.addActionListener(this);
         add(panel, BorderLayout.CENTER);

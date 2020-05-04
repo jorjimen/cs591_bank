@@ -31,7 +31,7 @@ public class AddStocksFrame extends JFrame implements ActionListener {
         panel.add(sharesField); 
         panel.add(addStock); 
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         addStock.addActionListener(this);
 

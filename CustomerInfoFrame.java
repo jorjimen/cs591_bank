@@ -20,7 +20,7 @@ public class CustomerInfoFrame extends JFrame implements ActionListener {
         panel.add(customerTextField); 
         panel.add(checkInfo); 
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         checkInfo.addActionListener(this);
 
         add(panel, BorderLayout.CENTER); 

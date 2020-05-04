@@ -23,7 +23,7 @@ public class AdjustStocksFrame extends JFrame implements ActionListener {
         panel.add(priceField); 
         panel.add(adjustPrice); 
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         adjustPrice.addActionListener(this);
 
