@@ -42,6 +42,8 @@ public class AdjustStocksFrame extends JFrame implements ActionListener {
                 status = true; 
                 s.setCurrentPrice(new Dollar(price));
                 JOptionPane.showMessageDialog(rootPane, "The price of " + s.getTicker() + " stock has successfully been set to " + s.getCurrentPrice().toString() + ".");
+                PersistanceHandler p = new PersistanceHandler();
+                p.saveState();
             }
         }
         if (!status) {
