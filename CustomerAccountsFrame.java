@@ -145,6 +145,8 @@ public class CustomerAccountsFrame extends JFrame implements ActionListener {
                     }
                     break;
             }
+            PersistanceHandler p = new PersistanceHandler();
+            p.saveState();
         }
 
         if (e.getSource() == delete_button) {
