@@ -1,5 +1,6 @@
 
 public class Stock implements BankComponent, Exchangeable {
+    
     private final ID id = new ID();
     private String name; 
     private String ticker; 
