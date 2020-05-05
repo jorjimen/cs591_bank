@@ -1,7 +1,9 @@
 ACCOUNT 0
 checking dollar
-dollar 2509841.0
+dollar 1269052.0
 START TRANSACTIONS
 deposit dollar 124.0 Wed May 06 12:39:16 EDT 2020
 deposit dollar 12.0 Thu May 07 12:39:16 EDT 2020
+deposit dollar 455.0 Sat May 09 12:39:16 EDT 2020
+withdrawl dollar 1241244.0 Sat May 09 12:39:16 EDT 2020
 END TRANSACTIONS
