@@ -98,6 +98,7 @@ public class DepositFrame extends JFrame  implements ActionListener {
                         break;
                 }
                 acc.deposit(deposit);
+                JOptionPane.showMessageDialog(rootPane, "Congratulations, the following transaction was completed:\n\n" + deposit.toString());
                 closeFrame();
                 PersistanceHandler p = new PersistanceHandler();
                 p.saveState();

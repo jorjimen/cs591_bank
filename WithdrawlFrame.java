@@ -99,6 +99,7 @@ public class WithdrawlFrame extends JFrame  implements ActionListener {
                         break;
                 }
                 acc.withdraw(withdrawl);
+                JOptionPane.showMessageDialog(rootPane, "Congratulations, the following transaction was completed:\n\n" + withdrawl.toString());
                 PersistanceHandler p = new PersistanceHandler();
                 p.saveState();
                 closeFrame();
