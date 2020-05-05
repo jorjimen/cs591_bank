@@ -73,6 +73,33 @@ public class PersistanceHandler {
                     }
                     writer.write("\n");
                 }
+                if (account instanceof LoanAccount) {
+                    writer.write("loan start\n");
+                    LoanAccount loanAccount = (LoanAccount) account;
+                    for (Loan loan : loanAccount.getLoans()) {
+                        // public Loan(Currency principal, Customer customer, Date date, String collateral) 
+                        writer.write(loan.getPrincipal().getStringType() + " " + Double.toString(loan.getPrincipal().getValue()) + " " + loan.getCollateral() + " " + loan.getDate() + "\n");
+                        writer.write(loan.getRemainingBalance().getStringType() + " " + Double.toString(loan.getRemainingBalance().getValue()));
+                        writer.write(" " + loan.getInterestAccumulated().getStringType() + " " + Double.toString(loan.getInterestAccumulated().getValue()) + "\n");
+                        if (loan.getInterestCharges().size() != 0) {
+                            for (Currency charge : loan.getInterestCharges()) {
+                                writer.write(charge.getStringType() + "-" + Double.toString(charge.getValue()) + " ");
+                            }
+                        } else {
+                            writer.write("interest skip");
+                        }
+                        writer.write("\n");
+                        if (loan.getPayments().size() != 0) {
+                            for (Currency charge : loan.getPayments()) {
+                                writer.write(charge.getStringType() + "-" + Double.toString(charge.getValue()) + " ");
+                            }
+                        } else {
+                            writer.write("payment skip");
+                        }
+                        writer.write("\n");
+                    }
+                    writer.write("loan end\n");
+                }
                 writer.write("END TRANSACTIONS\n");
                 writer.write("");
                 count += 1;
@@ -170,9 +197,14 @@ public class PersistanceHandler {
                 if (data.equals("START TRANSACTIONS")) {
                     data = reader.readLine();
                     while (!data.equals("END TRANSACTIONS")) {
-                        Transaction transaction = parseTransaction(customer, account, data);
-                        account.getTransactions().add(transaction);
-                        data = reader.readLine();
+                        if (!data.equals("loan start")) {
+                            Transaction transaction = parseTransaction(customer, account, data);
+                            account.getTransactions().add(transaction);
+                            data = reader.readLine();
+                        } else {
+                            ArrayList<Loan> loans = parseLoans(customer, account, reader);
+                            data = reader.readLine();
+                        }
                     }
                 }
                 data = reader.readLine();
@@ -205,6 +237,50 @@ public class PersistanceHandler {
         } else {
             return new Transfer(account, customer, currency, parseDate(split), account);
         }
+    }
+
+    private ArrayList<Loan> parseLoans(Customer customer, Account account, BufferedReader reader) {
+        ArrayList<Loan> loans = new ArrayList<Loan>();
+        try {
+            String data = reader.readLine();
+            while (!data.equals("loan end")) {
+                String[] constructorData = data.split(" ");
+                Currency principal = parseCurrency(constructorData[0], constructorData[1]);
+                String collateral = constructorData[2];
+                Date date = parseDate(constructorData);
+                Loan toAdd = new Loan(principal, customer, date, collateral);
+                data = reader.readLine();
+                String[] split = data.split(" ");
+                Currency remainingBalance = parseCurrency(split[0], split[1]);
+                Currency interstAccumulated = parseCurrency(split[2], split[3]);
+                toAdd.setBalance(remainingBalance);
+                toAdd.setAccumulatedInterest(interstAccumulated);
+                data = reader.readLine();
+                ArrayList<Currency> interestCharges = new ArrayList<Currency>();
+                if (!data.equals("interest skip")) {
+                    String[] charges = data.split(" ");
+                    for (String string : charges) {
+                        String[] interior = string.split("-");
+                        interestCharges.add(parseCurrency(interior[0], interior[1]));
+                    }
+                }
+                data = reader.readLine();
+                ArrayList<Currency> payments = new ArrayList<Currency>();
+                if (!data.equals("payment skip")) {
+                    String[] charges = data.split(" ");
+                    for (String string : charges) {
+                        String[] interior = string.split("-");
+                        payments.add(parseCurrency(interior[0], interior[1]));
+                    }
+                }
+                toAdd.setPayments(payments);
+                toAdd.interestChargest(interestCharges);
+                data = reader.readLine();
+                loans.add(toAdd);
+            }
+        } catch (Exception e) {};
+        ((LoanAccount) account).setLoans(loans);
+        return loans;
     }
 
     private Date parseDate(String[] split) {

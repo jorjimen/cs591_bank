@@ -83,7 +83,10 @@ public class LoanFrame extends JFrame  implements ActionListener {
                         break;
                 }
                 acc.addLoan(loan);
+                loan.makePayment(new Dollar (50));
                 acc.setAmount(acc.getTotalBalance());
+                PersistanceHandler p = new PersistanceHandler();
+                p.saveState();
                 JOptionPane.showMessageDialog(rootPane, "You have succesfully created a loan.\n" + loan.toString());
                 closeFrame();
                 customerFrame.setVisible(true);

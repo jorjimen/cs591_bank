@@ -80,6 +80,22 @@ public class Loan implements BankComponent, Exchangeable, InterestTaxable {
         return collateral;
     }
 
+    public void setBalance(Currency balance) {
+        this.remainingBalance = balance;
+    }
+
+    public void setAccumulatedInterest(Currency acc) {
+        this.interestAccumulated = acc;
+    }
+
+    public void setPayments(ArrayList<Currency> newP) {
+        this.payments = newP;
+    }
+
+    public void interestChargest(ArrayList<Currency> interestCharges) {
+        this.interestCharges = interestCharges;
+    }
+
     // changes the currency of a loan
     public void exchangeTo(String currencyType) {
         principal = principal.convertTo(currencyType);

@@ -1,9 +1,0 @@
-VIEWING TRANSACTION HISTORY PER CUSTOMER
-Number of Customers: 2
-
-Customer: Jorge
-no transactions for the current date
-
-Customer: Priya
-no transactions for the current date
-
