@@ -73,6 +73,7 @@ public class CustomerFrame extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(rootPane, "Trade Stocks button clicked");
         } else if (ae.getSource() == logOut) {
             JOptionPane.showMessageDialog(rootPane, "You have logged out.");
+            login.setTitle("Bank Login" + " - " + Bank.date);
             this.dispose();
             login.setVisible(true);
         }

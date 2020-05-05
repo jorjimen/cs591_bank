@@ -2,10 +2,9 @@ END OF DATE REPORT OF ALL TRANSACTIONS FOR: Sat May 09 12:39:16 EDT 2020
 Number of Customers: 2
 
 Customer: Jorge
-DEPOSIT (b0eba18cd5ba4994): $455.00 (Sat May 09 12:39:16 EDT 2020)
-WITHDRAWL (f11d0dfa2708ef4f): $1241244.00 (Sat May 09 12:39:16 EDT 2020)
+DEPOSIT (aa1003561432d6a1): $341.16 (Sat May 09 12:39:16 EDT 2020)
 
 
-Customer: Ziyu
+Customer: Priya
 no transactions for the current date
 

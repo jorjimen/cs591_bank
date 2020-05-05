@@ -58,6 +58,7 @@ public class ManagerFrame extends JFrame implements ActionListener {
         } else if (ae.getSource() == logOut) {
             JOptionPane.showMessageDialog(rootPane, "You have logged out.");
             this.dispose();
+            login.setTitle("Bank Login" + " - " + Bank.date);
             login.setVisible(true);
         } else if (ae.getSource() == advanceDate) {
             ArrayList<Deposit> interestPaid = new ArrayList<Deposit>();
@@ -110,7 +111,7 @@ public class ManagerFrame extends JFrame implements ActionListener {
             int count = 0;
             str.append("Customer: " + c.getUsername() + "\n"); 
             for (Transaction t : c.getAllTransactions()) {
-                if ((t.getDate().getDay() == Bank.date.getDay())) {
+                if ((t.getDate().getTime() == Bank.date.getTime())) {
                     str.append(t.toString() + "\n"); 
                     count += 1;
                 } else if (MODE == 3) {
