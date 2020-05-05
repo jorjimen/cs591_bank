@@ -51,7 +51,7 @@ public class Login extends JFrame implements ActionListener {
             dispose();
             JOptionPane.showMessageDialog(null, "You have logged in as a manager!");
             status = true;
-            ManagerFrame frame = new ManagerFrame(bank); 
+            ManagerFrame frame = new ManagerFrame(bank, this); 
         } else {
            for (Customer customer : customers) {
              if (userName.trim().equals(customer.getUsername()) && password.trim().equals(customer.getPassword())) {

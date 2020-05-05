@@ -7,7 +7,7 @@ public class PersistanceHandler {
         File index = new File("StoredData/");
         for (File file : index.listFiles()) {
             if (file != null) {
-                if (file.getName().equals("StockData") || file.getName().equals("date.txt") || file.getName().equals("report.txt")) {
+                if (file.getName().equals("StockData") || file.getName().equals("Report") || file.getName().equals("date.txt") || file.getName().equals("report.txt")) {
                     continue;
                 }
                 if (file.isDirectory()) {
@@ -84,6 +84,7 @@ public class PersistanceHandler {
     }
 
     public void loadState() {
+        loadDate();
         File[] files = new File("StoredData/").listFiles();
         for (File file : files) {
             if (!(file.getName().equals(".DS_Store"))) {
@@ -94,7 +95,9 @@ public class PersistanceHandler {
                     
                 } else if (file.getName().equals("date.txt")) {
                     loadDate();
-                } else {
+                } else if (file.getName().equals("Report")) {
+
+                }else {
                     Customer current_customer = new Customer(file.getName().split("_")[0], file.getName().split("_")[1], new Dollar(5));
                     current_customer.getAccounts().remove(0);
                     current_customer.accounts = parseAccounts(file, current_customer);
@@ -225,7 +228,7 @@ public class PersistanceHandler {
     }
 
     public void persistReport(String reportString) {
-        String path = "StoredData/report.txt";
+        String path = "StoredData/Report/" + Bank.date.toString() + ".txt";
         try {
             FileWriter writer = new FileWriter(path);
             writer.write(reportString);
