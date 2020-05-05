@@ -27,7 +27,7 @@ public class ManagerStockFrame extends JFrame implements ActionListener {
         addStock.addActionListener(this); 
 
         add(panel, BorderLayout.CENTER); 
-        setTitle("Stock Market Details"); 
+        setTitle("Stock Market Details"  + " - " + Bank.date); 
         setSize(600, 150); 
         setVisible(true); 
     }

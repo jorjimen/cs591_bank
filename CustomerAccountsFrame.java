@@ -46,7 +46,7 @@ public class CustomerAccountsFrame extends JFrame implements ActionListener {
         backButton.addActionListener(this);
 
         add(wholePanel, BorderLayout.CENTER);
-        setTitle("Bank - Account");
+        setTitle("Bank - Account"  + " - " + Bank.date);
         setSize(FORM_WIDTH, FORM_Height);
         setVisible(true);
 

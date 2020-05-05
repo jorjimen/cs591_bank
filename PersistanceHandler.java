@@ -45,6 +45,7 @@ public class PersistanceHandler {
             writer.close();
         } catch (Exception e) {
             System.out.println("error has occured");
+            System.out.println(e);
         }
     }
 
@@ -89,6 +90,10 @@ public class PersistanceHandler {
                 if (file.getName().equals("StockData")) {
                     ArrayList<Stock> stocks = loadStocks(file);
                     Bank.getInstance().getStockMarket().setStocks(stocks);;
+                } else if (file.getName().equals("Report")) {
+                    
+                } else if (file.getName().equals("date.txt")) {
+                    loadDate();
                 } else {
                     Customer current_customer = new Customer(file.getName().split("_")[0], file.getName().split("_")[1], new Dollar(5));
                     current_customer.getAccounts().remove(0);
@@ -191,11 +196,11 @@ public class PersistanceHandler {
                 break;
         }
         if (split[0].equals("deposit")) {
-            return new Deposit(account, customer, currency, new Date());
+            return new Deposit(account, customer, currency, Bank.date);
         } else if (split[0].equals("withdrawl")) {
-            return new Withdrawl(account, customer, currency, new Date());
+            return new Withdrawl(account, customer, currency, Bank.date);
         } else {
-            return new Transfer(account, customer, currency, new Date(), account);
+            return new Transfer(account, customer, currency, Bank.date, account);
         }
     }
 
@@ -214,4 +219,43 @@ public class PersistanceHandler {
         }
         return currentValue;
     }
+
+    public void persistReport(String reportString) {
+        String path = "StoredData/Report/report.txt";
+        try {
+            FileWriter writer = new FileWriter(path);
+            writer.write(reportString);
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("error has occured");
+        }
+    }
+
+    public void saveDate() {
+        Date date = Bank.date;
+        String path = "StoredData/date.txt";
+        try {
+            FileWriter writer = new FileWriter(path);
+            writer.write(date.toString());
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("error has occured");
+            System.out.println(e);
+        }
+    }
+
+    public void loadDate() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("StoredData/date.txt"));
+            String data = reader.readLine();
+            if (data == null) {
+                saveDate();
+                loadDate();
+            } else {
+                Bank.date = new Date(data);
+                reader.close();
+            }
+        } catch (Exception e) {}
+    }
+
 }

@@ -7,7 +7,7 @@ import javax.swing.*;
 public class StockMarketFrame extends JFrame {
     private Bank bank; 
     private JTable table = new JTable();
-    private JLabel titleLabel = new JLabel("Stock Market"); 
+    private JLabel titleLabel = new JLabel("Stock Market"  + " - " + Bank.date); 
     private JPanel panel = new JPanel(new GridLayout(3, 1));
 
     public StockMarketFrame(Bank bank) {

@@ -1,5 +1,6 @@
 ACCOUNT 0
 checking dollar
-dollar -50.0
+dollar 1450.0
 START TRANSACTIONS
+deposit dollar 1500.0 Mon May 11 12:36:43 EDT 2020
 END TRANSACTIONS

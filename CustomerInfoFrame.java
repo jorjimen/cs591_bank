@@ -24,7 +24,7 @@ public class CustomerInfoFrame extends JFrame implements ActionListener {
         checkInfo.addActionListener(this);
 
         add(panel, BorderLayout.CENTER); 
-        setTitle("Customer Details"); 
+        setTitle("Customer Details" + " - " + Bank.date); 
         setSize(600, 150); 
         setVisible(true); 
     }

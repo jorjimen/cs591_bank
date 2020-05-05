@@ -2,6 +2,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.*;
 
@@ -18,6 +20,9 @@ public class Login extends JFrame implements ActionListener {
     public Login(Bank bank) {
         this.bank = bank;
 
+        PersistanceHandler p = new PersistanceHandler();
+        p.loadDate();
+
         panel.add(usernameLabel);
         panel.add(userTextField);
         panel.add(passwordLabel);
@@ -28,7 +33,7 @@ public class Login extends JFrame implements ActionListener {
         
         submit.addActionListener(this);
         add(panel, BorderLayout.CENTER);
-        setTitle("Bank Login");
+        setTitle("Bank Login" + " - " + Bank.date);
         setSize(500, 150);
         setVisible(true);
 
@@ -46,7 +51,6 @@ public class Login extends JFrame implements ActionListener {
             dispose();
             JOptionPane.showMessageDialog(null, "You have logged in as a manager!");
             status = true;
-            bank.managerHandler();
             ManagerFrame frame = new ManagerFrame(bank); 
         } else {
            for (Customer customer : customers) {
@@ -55,7 +59,6 @@ public class Login extends JFrame implements ActionListener {
                 dispose();
                 JOptionPane.showMessageDialog(null, "You have logged in as a user!");
                 status = true;
-                bank.userHandler();
                 CustomerFrame frame = new CustomerFrame(this, bank, customer); 
              }
            }

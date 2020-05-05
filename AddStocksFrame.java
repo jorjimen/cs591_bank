@@ -36,7 +36,7 @@ public class AddStocksFrame extends JFrame implements ActionListener {
         addStock.addActionListener(this);
 
         add(panel, BorderLayout.CENTER); 
-        setTitle("Stock Price Adjustment"); 
+        setTitle("Stock Price Adjustment"  + " - " + Bank.date); 
         setSize(600, 200); 
         setVisible(true); 
     }

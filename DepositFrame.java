@@ -46,7 +46,7 @@ public class DepositFrame extends JFrame  implements ActionListener {
 
         backButton.addActionListener(this);
         add(wholePanel, BorderLayout.CENTER);
-        setTitle("Bank - Deposit");
+        setTitle("Bank - Deposit" + " - " + Bank.date);
         setSize(FORM_WIDTH, FORM_Height);
         setVisible(true);
 
@@ -99,6 +99,8 @@ public class DepositFrame extends JFrame  implements ActionListener {
                 }
                 acc.deposit(deposit);
                 closeFrame();
+                PersistanceHandler p = new PersistanceHandler();
+                p.saveState();
                 customerFrame.setVisible(true);
             }
         });
