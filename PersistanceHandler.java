@@ -7,7 +7,7 @@ public class PersistanceHandler {
         File index = new File("StoredData/");
         for (File file : index.listFiles()) {
             if (file != null) {
-                if (file.getName().equals("StockData")) {
+                if (file.getName().equals("StockData") || file.getName().equals("date.txt") || file.getName().equals("report.txt")) {
                     continue;
                 }
                 if (file.isDirectory()) {
@@ -90,7 +90,7 @@ public class PersistanceHandler {
                 if (file.getName().equals("StockData")) {
                     ArrayList<Stock> stocks = loadStocks(file);
                     Bank.getInstance().getStockMarket().setStocks(stocks);;
-                } else if (file.getName().equals("Report")) {
+                } else if (file.getName().equals("report.txt")) {
                     
                 } else if (file.getName().equals("date.txt")) {
                     loadDate();
@@ -196,12 +196,16 @@ public class PersistanceHandler {
                 break;
         }
         if (split[0].equals("deposit")) {
-            return new Deposit(account, customer, currency, Bank.date);
+            return new Deposit(account, customer, currency, parseDate(split));
         } else if (split[0].equals("withdrawl")) {
-            return new Withdrawl(account, customer, currency, Bank.date);
+            return new Withdrawl(account, customer, currency, parseDate(split));
         } else {
-            return new Transfer(account, customer, currency, Bank.date, account);
+            return new Transfer(account, customer, currency, parseDate(split), account);
         }
+    }
+
+    private Date parseDate(String[] split) {
+        return new Date(split[3] + " " + split[4] + " " + split[5] + " " + split[6] + " " + split[7] + " " + split[8]);
     }
 
     private Currency parseCurrency(String split_one, String split_two) {
@@ -221,7 +225,7 @@ public class PersistanceHandler {
     }
 
     public void persistReport(String reportString) {
-        String path = "StoredData/Report/report.txt";
+        String path = "StoredData/report.txt";
         try {
             FileWriter writer = new FileWriter(path);
             writer.write(reportString);
