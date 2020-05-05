@@ -5,7 +5,7 @@ public class SavingsAccount extends Account implements InterestTaxable {
 
     // the interest rate that determines how much interest the holder of the account 
     // will earn on their savings 
-    private double interestRate;
+    private double interestRate = 1.03;
 
     public SavingsAccount(String currencyType) {
         super(currencyType); 
@@ -40,7 +40,23 @@ public class SavingsAccount extends Account implements InterestTaxable {
         return (getAmount().convertTo("dollar").getValue() >= 2500); 
     }
 
-
-
+    // accumulates interest on the current balance based on the interest rate
+    // returns the amount of interested that was currently accumulated
+    public Currency accumulateInterest() {
+        double interestToCharge = getAmount().getValue() * (interestRate/100);
+        Currency charge;
+        switch (getCurrencyType()) {
+            case "dollar":
+                charge = new Dollar(interestToCharge);
+                return charge;
+            case "euro":
+                charge = new Euro(interestToCharge);
+                return charge;
+            case "yen":
+                charge = new Yen(interestToCharge);
+                return charge;
+        }
+        return new Dollar(0);
+    }
 
 }

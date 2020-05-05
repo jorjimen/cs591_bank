@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -59,6 +60,28 @@ public class ManagerFrame extends JFrame implements ActionListener {
             this.dispose();
             login.setVisible(true);
         } else if (ae.getSource() == advanceDate) {
+            ArrayList<Deposit> interestPaid = new ArrayList<Deposit>();
+            for (Customer customer : bank.getCustomers()) {
+                for (Account account : customer.getAccounts()) {
+                    if (account instanceof SavingsAccount) {
+                        if (account.getAmount().convertTo("dollar").getValue() > 2500) {
+                            Currency interest = ((SavingsAccount) account).accumulateInterest();
+                            Deposit dep = new Deposit(account,customer, interest,Bank.date);
+                            account.deposit(dep);
+                            interestPaid.add(dep);
+                        }
+                    }
+                }
+            }
+            if (interestPaid.size() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "No interest was paid today! Wealthy!");
+            } else {
+                String msg = "Sad! You had to pay interest to your customers!\n\n";
+                for (Deposit deposit : interestPaid) {
+                    msg += deposit.getUser().getUsername() + ": Savings Account (" + deposit.getAccount().getID().toString() + ") received " + deposit.getValue().toString() + " (" + deposit.getAccount().getAmount().toString() + ").\n";
+                }
+                JOptionPane.showMessageDialog(rootPane, msg);
+            }
             generateBankReport(0);
             Bank.pushDate();
             JOptionPane.showMessageDialog(rootPane, "Date has been advanced forward to " + Bank.date.toString());
