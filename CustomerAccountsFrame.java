@@ -134,7 +134,7 @@ public class CustomerAccountsFrame extends JFrame implements ActionListener {
                     }
                     break;
                 case "loan":
-                    LoanAccount loanAccount = new LoanAccount("doller");
+                    LoanAccount loanAccount = new LoanAccount("dollar");
                     result = JOptionPane.showConfirmDialog(null,
                             "Do you want to open a loan account?\nThis operation will charge $" + loanAccount.getOpeningFee().getValue() + " for service fee",
                             "Confirm",
@@ -159,7 +159,7 @@ public class CustomerAccountsFrame extends JFrame implements ActionListener {
                 int index = -1;
                 switch (cmbValue){
                     case "checking":
-                        CheckingAccount checkingAccount = new CheckingAccount("doller");
+                        CheckingAccount checkingAccount = new CheckingAccount("dollar");
                         result = JOptionPane.showConfirmDialog(null,
                                 "Close this account?\nThis operation will charge $" + checkingAccount.getOpeningFee().getValue() + " service fee",
                                 "Confirm",
@@ -171,7 +171,7 @@ public class CustomerAccountsFrame extends JFrame implements ActionListener {
                         }
                         break;
                     case "savings":
-                        SavingsAccount savingsAccount = new SavingsAccount("doller");
+                        SavingsAccount savingsAccount = new SavingsAccount("dollar");
                         result = JOptionPane.showConfirmDialog(null,
                                 "Close this account?\nThis operation will charge $" + savingsAccount.getOpeningFee().getValue() + " service fee",
                                 "Confirm",
@@ -183,7 +183,7 @@ public class CustomerAccountsFrame extends JFrame implements ActionListener {
                         }
                         break;
                     case "securities":
-                        SecuritiesAccount securitiesAccount = new SecuritiesAccount("doller");
+                        SecuritiesAccount securitiesAccount = new SecuritiesAccount("dollar");
                         result = JOptionPane.showConfirmDialog(null,
                                 "Close this account?\nThis operation will charge $" + securitiesAccount.getOpeningFee().getValue() + " service fee",
                                 "Confirm",
@@ -195,7 +195,7 @@ public class CustomerAccountsFrame extends JFrame implements ActionListener {
                         }
                         break;
                     case "loan":
-                        LoanAccount loanAccount = new LoanAccount("doller");
+                        LoanAccount loanAccount = new LoanAccount("dollar");
                         result = JOptionPane.showConfirmDialog(null,
                                 "Close this account?\nThis operation will charge $" + loanAccount.getOpeningFee().getValue() + " service fee",
                                 "Confirm",
@@ -209,6 +209,8 @@ public class CustomerAccountsFrame extends JFrame implements ActionListener {
                 }
             }
         }
+        PersistanceHandler p = new  PersistanceHandler ();
+        p.saveState();
     }
 
 
