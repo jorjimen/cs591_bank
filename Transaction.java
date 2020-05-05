@@ -19,7 +19,7 @@ abstract public class Transaction implements BankComponent, Exchangeable {
         this.account = account;
         this.user = user;
         this.value = value;
-        this.date = Bank.date;
+        this.date = date;
     }
 
     // getter methods for a transaction

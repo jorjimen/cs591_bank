@@ -87,15 +87,15 @@ public class WithdrawlFrame extends JFrame  implements ActionListener {
                 switch (currency){
                     case "USD":
                         Dollar dollar = new Dollar(Double.valueOf(amount));
-                        withdrawl= new Withdrawl(acc,c,dollar,new Date());
+                        withdrawl= new Withdrawl(acc,c,dollar,Bank.date);
                         break;
                     case "EUR":
                         Euro euro = new Euro(Double.valueOf(amount));
-                        withdrawl= new Withdrawl(acc,c,euro,new Date());
+                        withdrawl= new Withdrawl(acc,c,euro,Bank.date);
                         break;
                     case "CNY":
                         Yen yen = new Yen(Double.valueOf(amount));
-                        withdrawl= new Withdrawl(acc,c,yen,new Date());
+                        withdrawl= new Withdrawl(acc,c,yen,Bank.date);
                         break;
                 }
                 acc.withdraw(withdrawl);
