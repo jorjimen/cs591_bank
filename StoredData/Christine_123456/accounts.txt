@@ -1,0 +1,6 @@
+ACCOUNT 0
+checking dollar
+dollar 450.0
+START TRANSACTIONS
+deposit dollar 500.0 Tue May 12 12:39:16 EDT 2020
+END TRANSACTIONS
