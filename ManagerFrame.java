@@ -58,6 +58,7 @@ public class ManagerFrame extends JFrame implements ActionListener {
         } else if (ae.getSource() == logOut) {
             JOptionPane.showMessageDialog(rootPane, "You have logged out.");
             this.dispose();
+            login.setTitle("Bank Login" + " - " + Bank.date);
             login.setVisible(true);
         } else if (ae.getSource() == advanceDate) {
             ArrayList<Deposit> interestPaid = new ArrayList<Deposit>();
