@@ -14,7 +14,7 @@ public class ManagerFrame extends JFrame implements ActionListener {
     private JButton checkCustomer = new JButton("Check on a Customer"); 
     private JButton adjustStocks = new JButton("Adjust Stocks"); 
     private JButton advanceDate = new JButton("Advance Date");
-    private JButton allReports = new JButton("View All Transactions Up To Date");
+    private JButton allReports = new JButton("Transaction History");
     private JButton logOut = new JButton("Log Out"); 
 
     public ManagerFrame(Bank bank, Login login) {
@@ -64,7 +64,7 @@ public class ManagerFrame extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(rootPane, "Date has been advanced forward to " + Bank.date.toString());
             setTitle("Manager Login"  + " - " + Bank.date);
         } else if (ae.getSource() == allReports) {
-            // generateBankReport(false);
+            generateBankReport(3);
         }
     }
 
@@ -75,7 +75,10 @@ public class ManagerFrame extends JFrame implements ActionListener {
             str.append("END OF DATE REPORT OF ALL TRANSACTIONS FOR: " + Bank.date.toString() + "\n"); 
             break;
             case 1:
-            str.append("MID-DAY BANK REPORT OF ALL TRANSACTIONS FOR: " + Bank.date.toString() + "\n"); 
+            str.append("MID-DAY BANK REPORT OF ALL TRANSACTIONS FOR: " + Bank.date.toString() + "\n");
+            break; 
+            case 3:
+            str.append("VIEWING TRANSACTION HISTORY PER CUSTOMER\n"); 
             break;
         }
         str.append("Number of Customers: " + bank.getCustomers().size() + "\n\n"); 
@@ -85,8 +88,9 @@ public class ManagerFrame extends JFrame implements ActionListener {
             str.append("Customer: " + c.getUsername() + "\n"); 
             for (Transaction t : c.getAllTransactions()) {
                 if ((t.getDate().getDay() == Bank.date.getDay())) {
-                    System.out.print(t.getDate().getDay());
-                    System.out.print(Bank.date.getDay());
+                    str.append(t.toString() + "\n"); 
+                    count += 1;
+                } else if (MODE == 3) {
                     str.append(t.toString() + "\n"); 
                     count += 1;
                 }
@@ -97,9 +101,8 @@ public class ManagerFrame extends JFrame implements ActionListener {
             str.append("\n\n"); 
         }
         PersistanceHandler p = new PersistanceHandler();
-        p.persistReport(str.toString());
+        p.persistReport(str.toString(), MODE);
         JOptionPane.showMessageDialog(rootPane, str.toString());
-
     }
 
 }

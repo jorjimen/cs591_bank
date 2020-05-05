@@ -227,8 +227,14 @@ public class PersistanceHandler {
         return currentValue;
     }
 
-    public void persistReport(String reportString) {
-        String path = "StoredData/Report/" + Bank.date.toString() + ".txt";
+    public void persistReport(String reportString, int mode) {
+        String path;
+        if (mode == 3) {
+            path = "StoredData/Report/HISTORICAL/allTransactions_" + Bank.date.toString() + ".txt";
+        }
+        else {
+            path = "StoredData/Report/" + Bank.date.toString() + ".txt";
+        }
         try {
             FileWriter writer = new FileWriter(path);
             writer.write(reportString);
