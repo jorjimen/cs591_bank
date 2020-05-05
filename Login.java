@@ -20,6 +20,9 @@ public class Login extends JFrame implements ActionListener {
     public Login(Bank bank) {
         this.bank = bank;
 
+        PersistanceHandler p = new PersistanceHandler();
+        p.loadDate();
+
         panel.add(usernameLabel);
         panel.add(userTextField);
         panel.add(passwordLabel);
@@ -30,7 +33,7 @@ public class Login extends JFrame implements ActionListener {
         
         submit.addActionListener(this);
         add(panel, BorderLayout.CENTER);
-        setTitle("Bank Login");
+        setTitle("Bank Login" + " - " + Bank.date);
         setSize(500, 150);
         setVisible(true);
 

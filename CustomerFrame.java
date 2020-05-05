@@ -49,7 +49,7 @@ public class CustomerFrame extends JFrame implements ActionListener {
         logOut.addActionListener(this);
 
         add(panel, BorderLayout.CENTER);
-        setTitle("Customer Login");
+        setTitle("Customer Login" + " - " + Bank.date);
         setSize(450, 450);
         setVisible(true);
     }

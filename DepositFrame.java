@@ -46,7 +46,7 @@ public class DepositFrame extends JFrame  implements ActionListener {
 
         backButton.addActionListener(this);
         add(wholePanel, BorderLayout.CENTER);
-        setTitle("Bank - Deposit");
+        setTitle("Bank - Deposit" + " - " + Bank.date);
         setSize(FORM_WIDTH, FORM_Height);
         setVisible(true);
 

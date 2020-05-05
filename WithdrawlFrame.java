@@ -45,7 +45,7 @@ public class WithdrawlFrame extends JFrame  implements ActionListener {
 
         backButton.addActionListener(this);
         add(wholePanel, BorderLayout.CENTER);
-        setTitle("Bank - Withdrawl");
+        setTitle("Bank - Withdrawl"  + " - " + Bank.date);
         setSize(FORM_WIDTH, FORM_Height);
         setVisible(true);
 

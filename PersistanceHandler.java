@@ -252,7 +252,6 @@ public class PersistanceHandler {
                 saveDate();
                 loadDate();
             } else {
-                System.out.println(data);
                 Bank.date = new Date(data);
                 reader.close();
             }

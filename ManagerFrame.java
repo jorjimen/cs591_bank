@@ -36,7 +36,7 @@ public class ManagerFrame extends JFrame implements ActionListener {
         advanceDate.addActionListener(this);
 
         add(panel, BorderLayout.CENTER);
-        setTitle("Manager Login");
+        setTitle("Manager Login"  + " - " + Bank.date);
         setSize(600, 150);
         setVisible(true);
     }
@@ -53,8 +53,9 @@ public class ManagerFrame extends JFrame implements ActionListener {
         } else if (ae.getSource() == logOut) {
             JOptionPane.showMessageDialog(rootPane, "You have logged out.");
         } else if (ae.getSource() == advanceDate) {
-            JOptionPane.showMessageDialog(rootPane, "Date has been advanced forward to " + Bank.date.toString());
             Bank.pushDate();
+            JOptionPane.showMessageDialog(rootPane, "Date has been advanced forward to " + Bank.date.toString());
+            setTitle("Manager Login"  + " - " + Bank.date);
         }
     }
 
