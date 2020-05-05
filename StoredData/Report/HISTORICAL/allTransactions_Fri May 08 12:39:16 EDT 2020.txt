@@ -1,0 +1,11 @@
+VIEWING TRANSACTION HISTORY PER CUSTOMER
+Number of Customers: 2
+
+Customer: Jorge
+DEPOSIT (332de676abf033ef): $32500.00 (Thu May 07 12:39:16 EDT 2020)
+DEPOSIT (8d60b549ea4ca728): $334.24 (Thu May 07 12:39:16 EDT 2020)
+
+
+Customer: Priya
+no transactions for the current date
+

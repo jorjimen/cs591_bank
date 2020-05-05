@@ -110,7 +110,7 @@ public class ManagerFrame extends JFrame implements ActionListener {
             int count = 0;
             str.append("Customer: " + c.getUsername() + "\n"); 
             for (Transaction t : c.getAllTransactions()) {
-                if ((t.getDate().getDay() == Bank.date.getDay())) {
+                if ((t.getDate().getTime() == Bank.date.getTime())) {
                     str.append(t.toString() + "\n"); 
                     count += 1;
                 } else if (MODE == 3) {

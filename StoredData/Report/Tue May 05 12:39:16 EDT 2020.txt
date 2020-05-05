@@ -1,9 +1,9 @@
-END OF DATE REPORT OF ALL TRANSACTIONS FOR: Sun May 10 12:39:16 EDT 2020
+END OF DATE REPORT OF ALL TRANSACTIONS FOR: Tue May 05 12:39:16 EDT 2020
 Number of Customers: 2
 
 Customer: Jorge
 no transactions for the current date
 
-Customer: Ziyu
+Customer: Priya
 no transactions for the current date
 
