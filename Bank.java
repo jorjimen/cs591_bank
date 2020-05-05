@@ -22,6 +22,7 @@ public class Bank {
 
     public static void pushDate() {
         PersistanceHandler p = new PersistanceHandler();
+        p.saveState();
         p.loadDate();
         Calendar c = Calendar.getInstance();
         c.setTime(Bank.date);

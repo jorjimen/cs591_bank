@@ -1,9 +1,8 @@
-END OF DATE REPORT OF ALL TRANSACTIONS FOR: Wed May 13 12:39:16 EDT 2020
+END OF DATE REPORT OF ALL TRANSACTIONS FOR: Fri May 15 12:39:16 EDT 2020
 Number of Customers: 3
 
 Customer: Jorge
-DEPOSIT (6ee93135cb51cf7c): $124.00 (Wed May 06 12:39:16 EDT 2020)
-
+no transactions for the current date
 
 Customer: Ziyu
 no transactions for the current date

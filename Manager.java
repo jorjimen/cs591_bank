@@ -15,11 +15,6 @@ public class Manager extends BankUser {
         System.out.println(); 
     }
 
-    // a method that shows the daily report on transactions for that day.
-    public void showDailyReport(Date date){
-
-    }
-
     // a method which let manager to check-up on a specific customer.
     public void checkUpCustomer(Customer customer){
         customer.printUserInfo();

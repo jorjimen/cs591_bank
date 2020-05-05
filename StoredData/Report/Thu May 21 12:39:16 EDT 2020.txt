@@ -1,0 +1,18 @@
+END OF DATE REPORT OF ALL TRANSACTIONS FOR: Thu May 21 12:39:16 EDT 2020
+Number of Customers: 3
+
+Customer: Jorge
+DEPOSIT (a7b2918a11a8e74c): $12.00 (Thu May 07 12:39:16 EDT 2020)
+DEPOSIT (26c3d49d64c69abd): -$0.51 (Thu May 14 12:39:16 EDT 2020)
+DEPOSIT (2d8d3a0e1ee8e31f): $139.93 (Thu May 21 12:39:16 EDT 2020)
+DEPOSIT (dc908503348e5321): -$0.51 (Thu May 14 12:39:16 EDT 2020)
+
+
+Customer: Ziyu
+DEPOSIT (c71308eb6e77b2e8): -$0.51 (Thu May 14 12:39:16 EDT 2020)
+DEPOSIT (9ed334f971c62a03): -$0.51 (Thu May 14 12:39:16 EDT 2020)
+
+
+Customer: Christine
+no transactions for the current date
+
