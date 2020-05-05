@@ -1,16 +1,28 @@
 ACCOUNT 0
 checking dollar
-dollar -50.0
+dollar 123238.0
 START TRANSACTIONS
+deposit dollar 100.0 Sun May 10 12:39:16 EDT 2020
+deposit dollar 124421.0 Sun May 10 12:39:16 EDT 2020
+withdrawl dollar 1234.0 Sun May 10 12:39:16 EDT 2020
+deposit dollar 1.0 Mon May 11 12:39:16 EDT 2020
 END TRANSACTIONS
 ACCOUNT 1
-savings dollar
-dollar 33463.08
+loan dollar
+dollar 12465.0
 START TRANSACTIONS
-deposit dollar 32500.0 Thu May 07 12:39:16 EDT 2020
-deposit dollar 334.24 Thu May 07 12:39:16 EDT 2020
-deposit dollar 337.68 Fri May 08 12:39:16 EDT 2020
-deposit dollar 341.16 Sat May 09 12:39:16 EDT 2020
+deposit dollar 200.0 Sun May 10 12:39:16 EDT 2020
+deposit dollar 2442.0 Sun May 10 12:39:16 EDT 2020
+loan start
+dollar 124.0 joe Mon May 11 12:39:16 EDT 2020
+dollar 77.85 dollar 3.85
+dollar-0.75 dollar-0.76 dollar-0.77 dollar-0.78 dollar-0.79 
+dollar-50.0 
+dollar 12441.0 bike Mon May 11 12:39:16 EDT 2020
+dollar 13035.97 dollar 644.97
+dollar-126.39 dollar-127.68 dollar-128.98 dollar-130.3 dollar-131.62 
+dollar-50.0 
+loan end
 END TRANSACTIONS
 ACCOUNT 2
 checking dollar
@@ -18,12 +30,15 @@ dollar -50.0
 START TRANSACTIONS
 END TRANSACTIONS
 ACCOUNT 3
-checking dollar
-dollar -50.0
+loan dollar
+dollar 4192.0
 START TRANSACTIONS
+deposit dollar 4242.0 Sun May 10 12:39:16 EDT 2020
+loan start
+loan end
 END TRANSACTIONS
 ACCOUNT 4
-loan dollar
-dollar 11000.0
+checking dollar
+dollar -50.0
 START TRANSACTIONS
 END TRANSACTIONS

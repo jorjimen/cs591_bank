@@ -71,6 +71,10 @@ public class ManagerFrame extends JFrame implements ActionListener {
                             account.deposit(dep);
                             interestPaid.add(dep);
                         }
+                    } else if (account instanceof LoanAccount) {
+                        for (Loan loan : ((LoanAccount) account).getLoans()) {
+                            System.out.println(loan.accumulateInterest());
+                        }
                     }
                 }
             }
