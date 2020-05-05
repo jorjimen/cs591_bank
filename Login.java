@@ -2,6 +2,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.*;
 
@@ -46,7 +48,6 @@ public class Login extends JFrame implements ActionListener {
             dispose();
             JOptionPane.showMessageDialog(null, "You have logged in as a manager!");
             status = true;
-            bank.managerHandler();
             ManagerFrame frame = new ManagerFrame(bank); 
         } else {
            for (Customer customer : customers) {
@@ -55,7 +56,6 @@ public class Login extends JFrame implements ActionListener {
                 dispose();
                 JOptionPane.showMessageDialog(null, "You have logged in as a user!");
                 status = true;
-                bank.userHandler();
                 CustomerFrame frame = new CustomerFrame(this, bank, customer); 
              }
            }

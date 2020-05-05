@@ -6,6 +6,7 @@ public class Bank {
     private static StockMarket stockMarket = new StockMarket(); 
     static private Manager manager = new Manager("John Doe", "123456");
     static private ArrayList<Customer> customers = new ArrayList();
+    static Date date = new Date();
 
     private Bank() {
         new Login(this);
@@ -19,24 +20,22 @@ public class Bank {
         return single_instance;
     }
 
+    public static void pushDate() {
+        PersistanceHandler p = new PersistanceHandler();
+        p.loadDate();
+        Calendar c = Calendar.getInstance();
+        c.setTime(Bank.date);
+        c.add(Calendar.DATE, 1);
+        date = c.getTime();
+        p.saveDate();
+    }
+
     public Manager getManager() {
         return manager;
     }
 
     public ArrayList<Customer> getCustomers() {
         return customers;
-    }
-
-    public void persist() {
-
-    }
-
-    public void managerHandler() {
-        
-    }
-
-    public void userHandler() {
-        
     }
 
     // a method to add a few customers to the bank to start off with 

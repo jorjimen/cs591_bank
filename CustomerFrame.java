@@ -67,7 +67,8 @@ public class CustomerFrame extends JFrame implements ActionListener {
             new WithdrawlFrame(this,customer);
 //            JOptionPane.showMessageDialog(rootPane, "Withdraw button clicked");
         } else if (ae.getSource() == requestLoan) {
-            JOptionPane.showMessageDialog(rootPane, "Request Loan button clicked");
+            // JOptionPane.showMessageDialog(rootPane, "Request Loan button clicked");
+            new LoanFrame(this, customer);
         } else if (ae.getSource() == tradeStocks) {
             JOptionPane.showMessageDialog(rootPane, "Trade Stocks button clicked");
         } else if (ae.getSource() == logOut) {

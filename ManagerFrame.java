@@ -12,6 +12,7 @@ public class ManagerFrame extends JFrame implements ActionListener {
     private JButton generateReport = new JButton("Generate Report");
     private JButton checkCustomer = new JButton("Check on a Customer"); 
     private JButton adjustStocks = new JButton("Adjust Stocks"); 
+    private JButton advanceDate = new JButton("Advance Date");
     private JButton logOut = new JButton("Log Out"); 
 
     public ManagerFrame(Bank bank) {
@@ -23,6 +24,7 @@ public class ManagerFrame extends JFrame implements ActionListener {
         panel.add(checkCustomer);
         panel.add(adjustStocks);
         panel.add(logOut); 
+        panel.add(advanceDate);
     
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -31,6 +33,7 @@ public class ManagerFrame extends JFrame implements ActionListener {
         checkCustomer.addActionListener(this);
         adjustStocks.addActionListener(this);
         logOut.addActionListener(this);
+        advanceDate.addActionListener(this);
 
         add(panel, BorderLayout.CENTER);
         setTitle("Manager Login");
@@ -49,8 +52,10 @@ public class ManagerFrame extends JFrame implements ActionListener {
             ManagerStockFrame frame = new ManagerStockFrame(bank); 
         } else if (ae.getSource() == logOut) {
             JOptionPane.showMessageDialog(rootPane, "You have logged out.");
+        } else if (ae.getSource() == advanceDate) {
+            JOptionPane.showMessageDialog(rootPane, "Date has been advanced forward to " + Bank.date.toString());
+            Bank.pushDate();
         }
-
     }
 
     public void generateBankReport() {
@@ -66,6 +71,8 @@ public class ManagerFrame extends JFrame implements ActionListener {
             str.append("\n\n"); 
         }
 
+        PersistanceHandler p = new PersistanceHandler();
+        p.persistReport(str.toString());
         JOptionPane.showMessageDialog(rootPane, str.toString());
 
     }

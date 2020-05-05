@@ -99,6 +99,8 @@ public class DepositFrame extends JFrame  implements ActionListener {
                 }
                 acc.deposit(deposit);
                 closeFrame();
+                PersistanceHandler p = new PersistanceHandler();
+                p.saveState();
                 customerFrame.setVisible(true);
             }
         });
