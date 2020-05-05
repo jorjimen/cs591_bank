@@ -1,7 +1,7 @@
 import java.util.Date;
 import java.util.ArrayList;
 
-public class Loan implements BankComponent, Exchangeable {
+public class Loan implements BankComponent, Exchangeable, InterestTaxable {
 
     // data members for the Loan object
     private final double interestRate = 1.02;

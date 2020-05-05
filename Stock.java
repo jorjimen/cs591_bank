@@ -1,5 +1,5 @@
 
-public class Stock implements BankComponent, Exchangeable {
+public class Stock implements BankComponent, Exchangeable, Tradeable {
     
     private final ID id = new ID();
     private String name; 
