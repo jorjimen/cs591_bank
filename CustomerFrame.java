@@ -68,7 +68,17 @@ public class CustomerFrame extends JFrame implements ActionListener {
 //            JOptionPane.showMessageDialog(rootPane, "Withdraw button clicked");
         } else if (ae.getSource() == requestLoan) {
             // JOptionPane.showMessageDialog(rootPane, "Request Loan button clicked");
-            new LoanFrame(this, customer);
+            boolean found = false;
+            for (Account account : customer.getAccounts()) {
+                if (account instanceof LoanAccount) {
+                    new LoanFrame(this, customer, (LoanAccount) account); 
+                    found = true;
+                    break;   
+                }
+            }
+            if (!found) {
+                JOptionPane.showMessageDialog(rootPane, "You do not have a Loan account yet. Please open one first.");
+            }
         } else if (ae.getSource() == tradeStocks) {
             JOptionPane.showMessageDialog(rootPane, "Trade Stocks button clicked");
         } else if (ae.getSource() == logOut) {

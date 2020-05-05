@@ -29,6 +29,7 @@ public class LoanFrame extends JFrame  implements ActionListener {
     private CustomerFrame customerFrame;
     private Customer customer;
 
+    private LoanAccount account;
 
 
     @Override
@@ -40,7 +41,7 @@ public class LoanFrame extends JFrame  implements ActionListener {
     }
 
 
-    public LoanFrame(final CustomerFrame customerFrame , Customer customer){
+    public LoanFrame(final CustomerFrame customerFrame , Customer customer, LoanAccount account){
         this.customer = customer;
         this.customerFrame = customerFrame;
 
@@ -64,25 +65,26 @@ public class LoanFrame extends JFrame  implements ActionListener {
                 String amount = amount_text.getText();
 
                 Customer c = getCustomer();
-                Account acc = c.getAccounts().get(c.findAccount(account.split("—")[1]));
+                LoanAccount acc = (LoanAccount) c.getAccounts().get(c.findAccount(account.split("—")[1]));
 
-                Deposit deposit = null;
+                Loan loan = null;
                 switch (currency){
                     case "USD":
                         Dollar dollar = new Dollar(Double.valueOf(amount));
-                        deposit= new Deposit(acc,c,dollar,new Date());
+                        loan = new Loan(dollar, customer, Bank.date, collateral_text.getText());
                         break;
                     case "EUR":
                         Euro euro = new Euro(Double.valueOf(amount));
-                        deposit= new Deposit(acc,c,euro,new Date());
+                        loan = new Loan(euro, customer, Bank.date, collateral_text.getText());
                         break;
                     case "CNY":
                         Yen yen = new Yen(Double.valueOf(amount));
-                        deposit= new Deposit(acc,c,yen,new Date());
+                        loan = new Loan(yen, customer, Bank.date, collateral_text.getText());
                         break;
                 }
-                acc.deposit(deposit);
-
+                acc.addLoan(loan);
+                acc.setAmount(acc.getTotalBalance());
+                JOptionPane.showMessageDialog(rootPane, "You have succesfully created a loan.\n" + loan.toString());
                 closeFrame();
                 customerFrame.setVisible(true);
             }
@@ -104,10 +106,12 @@ public class LoanFrame extends JFrame  implements ActionListener {
             choose_account_cmb.addItem("Please create an account first");
         }
         for (int i = 0; i < customer.getAccounts().size(); i++) {
-            String accountNum = customer.getAccounts().get(i).getID().toString();
-            String accountType = customer.getAccounts().get(i).getAccountType();
-            String balance = customer.getAccounts().get(i).getAmount().toString();
-            choose_account_cmb.addItem(accountType + "—" + accountNum + "—" + balance);
+            if (customer.getAccounts().get(i) instanceof LoanAccount) {
+                String accountNum = customer.getAccounts().get(i).getID().toString();
+                String accountType = customer.getAccounts().get(i).getAccountType();
+                String balance = customer.getAccounts().get(i).getAmount().toString();
+                choose_account_cmb.addItem(accountType + "—" + accountNum + "—" + balance);
+            }
         }
     }
 
@@ -167,7 +171,7 @@ public class LoanFrame extends JFrame  implements ActionListener {
         collateral_label  = new JLabel();
         collateral_label.setBackground(new Color(-524801));
         collateral_label.setForeground(new Color(-16777216));
-        collateral_label.setText("Your ollateral:");
+        collateral_label.setText("Enter collateral:");
         panel2.add(collateral_label, new GridConstraints(3, 2, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 
         collateral_text = new JTextField();

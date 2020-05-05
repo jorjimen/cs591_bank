@@ -147,7 +147,7 @@ public class PersistanceHandler {
                     case "securities":
                         account = new SecuritiesAccount(split[1]);
                         break;
-                    case "loans":
+                    case "loan":
                         account = new LoanAccount(split[1]);
                         break;
                 }
