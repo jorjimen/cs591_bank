@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+// Manager side add stocks GUI interface
 public class AddStocksFrame extends JFrame implements ActionListener {
     private Bank bank; 
     private JPanel panel = new JPanel(new GridLayout(5, 1)); 
@@ -18,6 +19,7 @@ public class AddStocksFrame extends JFrame implements ActionListener {
     private JTextField sharesField = new JTextField(); 
     private JButton addStock = new JButton("Add Stock"); 
 
+    // GUI panel for Manager side add stocks GUI interface
     public AddStocksFrame(Bank bank) {
         this.bank = bank; 
 
@@ -40,7 +42,9 @@ public class AddStocksFrame extends JFrame implements ActionListener {
         setSize(600, 200); 
         setVisible(true); 
     }
-
+    
+    
+    // Manager side add stocks GUI interface action performed Controls
     public void actionPerformed(ActionEvent ae) {
         String name = companyField.getText(); 
         String ticker = tickerField.getText(); 
