@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+
+// Manager side stock price adjustmen GUI interface
 public class AdjustStocksFrame extends JFrame implements ActionListener {
     private Bank bank; 
     private JPanel panel = new JPanel(new GridLayout(3, 1)); 
@@ -14,6 +16,8 @@ public class AdjustStocksFrame extends JFrame implements ActionListener {
     private JTextField priceField = new JTextField();
     private JButton adjustPrice = new JButton("Adjust Price");  
 
+    
+    // GUI panel for stock price adjustmen GUI interface
     public AdjustStocksFrame(Bank bank) {
         this.bank = bank;
 
@@ -32,7 +36,9 @@ public class AdjustStocksFrame extends JFrame implements ActionListener {
         setSize(600, 150); 
         setVisible(true); 
     }
-
+    
+    
+    // stock price adjustmen GUI action performed Controls
     public void actionPerformed(ActionEvent ae) {
         boolean status = false; 
         String stock = tickerField.getText(); 
