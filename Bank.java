@@ -1,7 +1,8 @@
 import java.util.*;
 
 public class Bank {
-
+    
+    // add a few default value (bank Manager user infomation) to the bank to start
     private static Bank single_instance = null; 
     private static StockMarket stockMarket = new StockMarket(); 
     static private Manager manager = new Manager("John Doe", "123456");
@@ -11,7 +12,8 @@ public class Bank {
     private Bank() {
         new Login(this);
     }
-
+    
+    
     public static Bank getInstance() {
         if (single_instance == null) {
             single_instance = new Bank(); 
