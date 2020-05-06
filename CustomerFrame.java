@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+//Customer side index page GUI interface
 public class CustomerFrame extends JFrame implements ActionListener {
     private Bank bank;
     private Customer customer; 
@@ -54,6 +55,8 @@ public class CustomerFrame extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    
+    //Customer side index page action performed Controls
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == viewAccount) {
             this.dispose();
