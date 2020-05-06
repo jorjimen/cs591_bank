@@ -5,7 +5,7 @@ public class BankUser {
 	// the name of the bank user.
 	private String username;
 
-	// the password of the bank user.
+    // the password of the bank user.
     private String password;
     
     public BankUser(String username, String password) {
